@@ -3,144 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>文科知识库 · 历政地速记站</title>
+<title>地理知识点</title>
 <style>
-/* ========== 全局基础 ========== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,"Microsoft YaHei",sans-serif}
+
 :root {
-  --bg: #ffffff;
-  --card: #fdfdfd;
-  --text: #333;
+  --bg: #fdf6fc;
+  --card: #fff;
+  --text: #222;
   --sub: #666;
-  --main: #ff8fb1;
-  --subcolor: #91bfff;
-  --line: #eee;
-  --dot-color: #f8e1e7;
+  --dot: #f8e3f1;
+  --main: #d45a7f;
+  --line: #f0e5ee;
 }
 [data-theme="dark"] {
-  --bg: #1a1a1e;
-  --card: #25252b;
-  --text: #e8e8e8;
+  --bg: #1a161d;
+  --card: #2a2430;
+  --text: #eee;
   --sub: #aaa;
-  --main: #ff9ebb;
-  --subcolor: #80b2ff;
-  --line: #333;
-  --dot-color: #332b33;
+  --dot: #332a30;
+  --main: #f18ba9;
+  --line: #443840;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 body {
-  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
-  background-color: var(--bg);
+  background: var(--bg);
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 22px 22px;
   color: var(--text);
-  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
-  background-size: 20px 20px;
-  line-height: 1.7;
-  padding-bottom: 60px;
-  transition: 0.3s;
+  padding-bottom: 80px;
 }
 
-/* ========== 顶部导航 ========== */
 .header {
-  position: sticky;
-  top: 0;
-  background: var(--card);
-  padding: 14px 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  z-index: 100;
-}
-.nav {
-  max-width: 1000px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.logo {
-  font-weight: bold;
-  color: var(--main);
-  font-size: 18px;
-}
-.theme-btn {
-  background: var(--subcolor);
-  color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 14px;
+  position:sticky;
+  top:0;
+  background:var(--card);
+  padding:14px 16px;
+  border-radius:14px;
+  margin:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  font-weight:bold;
+  text-align:center;
+  z-index:10;
 }
 
-/* ========== 搜索框 ========== */
-.search-box {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 0 20px;
+.bar {
+  display:flex;
+  gap:10px;
+  margin-bottom:10px;
 }
+
 #search {
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  background: var(--card);
-  color: var(--text);
-  font-size: 16px;
-  outline: none;
+  flex:1;
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid var(--dot);
+  background:var(--card);
+  color:var(--text);
+  font-size:15px;
 }
 
-/* ========== 主体容器 ========== */
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 0 20px;
+#themeBtn {
+  padding:10px 14px;
+  border-radius:10px;
+  border:none;
+  background:var(--main);
+  color:#fff;
+  font-weight:bold;
+  white-space:nowrap;
 }
 
-/* ========== 标签栏 ========== */
-.tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-.tab {
-  padding: 8px 14px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 500;
-}
-.tab.active {
-  background: var(--main);
-  color: #fff;
-  border-color: var(--main);
-}
-
-/* ========== 折叠面板 ========== */
 .folder {
-  background: var(--card);
+  margin: 14px;
   border-radius: 14px;
-  margin-bottom: 12px;
+  background: var(--card);
   overflow: hidden;
-  border: 1px solid var(--line);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
 .folder-title {
-  padding: 14px 16px;
+  padding: 16px;
   font-weight: bold;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
 }
 .folder-title::after {
   content: "+";
-  color: var(--sub);
-  font-size: 18px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
 }
-.folder.open .folder-title::after {
+.folder-title.active::after {
   content: "−";
 }
 .folder-body {
@@ -148,49 +100,35 @@ body {
   overflow: hidden;
   transition: max-height 0.4s ease;
 }
-.folder.open .folder-body {
-  max-height: 2000px;
-  padding: 0 16px 14px;
+.folder-title.active + .folder-body {
+  max-height: 10000px;
 }
 
-/* ========== 知识点卡片 ========== */
 .point {
-  margin: 10px 0;
-  padding: 12px;
-  background: color-mix(in srgb, var(--card) 90%, var(--main) 5%);
-  border-radius: 10px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--line);
+  line-height: 1.7;
+  font-size: 15px;
 }
 .point strong {
   color: var(--main);
 }
-.label {
-  display: inline-block;
-  padding: 2px 8px;
-  background: var(--subcolor);
-  color: #fff;
+
+.footer {
+  text-align: center;
   font-size: 12px;
-  border-radius: 6px;
-  margin-right: 6px;
+  color: var(--sub);
+  margin: 40px 0;
 }
 
-/* ========== 内容区块 ========== */
-.section {
-  display: none;
+.highlight {
+  background: #fff580;
+  color: #000;
+  padding: 2px 4px;
+  border-radius: 4px;
 }
-.section.show {
-  display: block;
-}
-
-/* ========== 地理答题模板卡片 ========== */
-.template-card {
-  padding: 14px;
-  background: color-mix(in srgb, var(--card) 85%, var(--subcolor) 6%);
-  border-radius: 12px;
-  margin: 10px 0;
-}
-.template-card h4 {
-  color: var(--subcolor);
-  margin-bottom: 6px;
+[data-theme="dark"] .highlight {
+  background: #ffdd57;
 }
 </style>
 </head>
@@ -198,258 +136,2268 @@ body {
 <body>
 
 <div class="header">
-  <div class="nav">
-    <div class="logo">📚 文科知识库 · 历政地</div>
-    <button class="theme-btn" id="themeToggle">夜间模式</button>
+  <div class="bar">
+    <input type="text" id="search" placeholder="搜索知识点…">
+    <button id="themeBtn">夜间模式</button>
+  </div>
+  <div style="margin-top:6px">地理知识点</div>
+</div>
+
+<div class="folder">
+  <div class="folder-title">第一章 宇宙中的地球</div>
+  <div class="folder-body">
+    <div class="folder">
+      <div class="folder-title">第一节 地球的宇宙环境</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 天体与天体系统</strong><br>
+          • 天体：宇宙中物质的存在形式，如恒星、星云、行星、卫星、彗星、流星体等。<br>
+          • 星云：由气体和尘埃组成，呈云雾状，是恒星诞生的场所。<br>
+          • 恒星：由炽热气体组成，能自己发光，太阳是离地球最近的恒星。<br>
+          • 天体系统层次：总星系→银河系→太阳系→地月系。<br>
+          • 银河系直径约10万光年，太阳系位于银河系一条旋臂上。
+        </div>
+        <div class="point">
+          <strong>2. 太阳系</strong><br>
+          • 中心天体：太阳（占太阳系总质量99.86%）。<br>
+          • 八大行星：水星、金星、地球、火星、木星、土星、天王星、海王星。<br>
+          • 运动特征：同向性、共面性、近圆性。<br>
+          • 类地行星：水、金、地、火；巨行星：木、土；远日行星：天王、海王。
+        </div>
+        <div class="point">
+          <strong>3. 地球存在生命的条件</strong><br>
+          <strong>外部条件：</strong><br>
+          • 稳定的太阳光照；安全的宇宙环境，大小行星各行其道。<br>
+          <strong>自身条件：</strong><br>
+          • 日地距离适中→适宜的温度。<br>
+          • 地球质量体积适中→适宜生物呼吸的大气。<br>
+          • 地球内部运动→液态水的形成。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第二节 太阳对地球的影响</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 太阳辐射</strong><br>
+          • 能量来源：太阳内部核聚变。<br>
+          • 对地球影响：提供光热资源；维持地表温度；推动水、大气运动和生命活动；为人类提供煤、石油等能源。
+        </div>
+        <div class="point">
+          <strong>2. 太阳活动</strong><br>
+          • 光球层：黑子（太阳活动强弱标志）。<br>
+          • 色球层：耀斑、日珥（最剧烈）。<br>
+          • 日冕层：太阳风。<br>
+          • 周期约11年。<br>
+          • 影响：干扰无线电短波通信；产生磁暴；高纬极光；影响气候与自然灾害。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第三节 地球的圈层结构</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 内部圈层</strong><br>
+          • 划分依据：地震波传播速度变化。<br>
+          • 莫霍界面：地下约33km，横波纵波速度加快。<br>
+          • 古登堡界面：地下约2900km，横波消失，纵波骤减。<br>
+          • 地壳：厚度不均，大陆厚海洋薄。<br>
+          • 地幔：上地幔上部有软流层，是岩浆发源地。<br>
+          • 地核：外核液态，内核固态，由铁镍组成。
+        </div>
+        <div class="point">
+          <strong>2. 外部圈层</strong><br>
+          • 大气圈：包围地球的气体层。<br>
+          • 水圈：连续但不规则。<br>
+          • 生物圈：占有大气圈底部、水圈全部、岩石圈上部，最活跃圈层。<br>
+          • 三大圈层相互联系、相互渗透。
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="search-box">
-  <input type="text" id="search" placeholder="🔍 搜索知识点……">
+<div class="folder">
+  <div class="folder-title">第二章 岩石圈与地表形态</div>
+  <div class="folder-body">
+    <div class="folder">
+      <div class="folder-title">第一节 岩石圈的组成与物质循环</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 三大类岩石</strong><br>
+          <strong>岩浆岩：</strong><br>
+          • 侵入岩：岩浆缓慢冷却，如花岗岩。<br>
+          • 喷出岩：岩浆快速冷却，如玄武岩、流纹岩、安山岩。<br>
+          <strong>沉积岩：</strong><br>
+          • 特点：层理构造、含有化石。<br>
+          • 常见：石灰岩、砂岩、页岩。<br>
+          <strong>变质岩：</strong><br>
+          • 石灰岩→大理岩；页岩→板岩；砂岩→石英岩；花岗岩→片麻岩。
+        </div>
+        <div class="point">
+          <strong>2. 岩石圈物质循环</strong><br>
+          • 岩浆→冷却凝固→岩浆岩。<br>
+          • 各类岩石→外力作用（风化、侵蚀、搬运、沉积、固结成岩）→沉积岩。<br>
+          • 各类岩石→变质作用→变质岩。<br>
+          • 各类岩石→重熔再生→岩浆。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第二节 内力作用与地表形态</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 内力作用</strong><br>
+          • 能量来源：地球内部放射性元素衰变。<br>
+          • 表现：地壳运动、岩浆活动、变质作用、地震。<br>
+          • 总趋势：使地表高低起伏。
+        </div>
+        <div class="point">
+          <strong>2. 板块构造学说</strong><br>
+          • 六大板块：亚欧、非洲、印度洋、太平洋、美洲、南极洲板块。<br>
+          • 生长边界：张裂→海岭、裂谷。<br>
+          • 消亡边界：碰撞→山脉、海沟、岛弧。
+        </div>
+        <div class="point">
+          <strong>3. 地质构造</strong><br>
+          <strong>褶皱：</strong><br>
+          • 背斜：岩层向上拱，中心老两翼新，常成山，易被侵蚀成谷。<br>
+          • 向斜：岩层向下弯，中心新两翼老，常成谷，易成山。<br>
+          <strong>断层：</strong><br>
+          • 地垒：断块上升→华山、庐山、泰山。<br>
+          • 地堑：断块下降→渭河平原、汾河谷地、东非大裂谷。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第三节 外力作用与地表形态</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 外力作用</strong><br>
+          • 能量来源：太阳辐射能。<br>
+          • 表现：风化、侵蚀、搬运、沉积、固结成岩。<br>
+          • 总趋势：削高填低，使地表趋于平坦。
+        </div>
+        <div class="point">
+          <strong>2. 流水作用</strong><br>
+          • 侵蚀：峡谷、瀑布、喀斯特地貌（溶洞、石林）。<br>
+          • 沉积：冲积扇、冲积平原、三角洲。
+        </div>
+        <div class="point">
+          <strong>3. 风力作用</strong><br>
+          • 侵蚀：风蚀蘑菇、风蚀柱、雅丹地貌。<br>
+          • 沉积：沙丘、黄土高原。
+        </div>
+        <div class="point">
+          <strong>4. 海浪与冰川作用</strong><br>
+          • 海浪：海蚀崖、海蚀柱、沙滩。<br>
+          • 冰川：U型谷、角峰、冰斗、峡湾。
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="container">
-  <div class="tabs">
-    <div class="tab active" data-target="history">历史</div>
-    <div class="tab" data-target="politics">政治</div>
-    <div class="tab" data-target="geo">地理（湘教版）</div>
-  </div>
-
-  <!-- ============================================== -->
-  <!-- 历史 -->
-  <!-- ============================================== -->
-  <div class="section show" id="history">
+<div class="folder">
+  <div class="folder-title">第三章 大气运动</div>
+  <div class="folder-body">
     <div class="folder">
-      <div class="folder-title">📅 一、按时间线顺序（中国史）</div>
+      <div class="folder-title">第一节 大气受热过程</div>
       <div class="folder-body">
-
-        <div class="folder">
-          <div class="folder-title">先秦时期</div>
-          <div class="folder-body">
-            <div class="point">
-              <strong>时间</strong>：远古～公元前221年<br>
-              <strong>核心</strong>：分封制、宗法制、井田制、百家争鸣<br>
-              <strong>影响</strong>：奠定中国古代政治文化基础
-            </div>
-          </div>
+        <div class="point">
+          <strong>1. 太阳辐射</strong><br>
+          • 太阳辐射为短波辐射，大部分到达地面。<br>
+          • 地面吸收后以地面长波辐射形式加热大气。<br>
+          • 大气直接热源是地面，而非太阳。
         </div>
-
-        <div class="folder">
-          <div class="folder-title">秦汉：大一统确立</div>
-          <div class="folder-body">
-            <div class="point">
-              <strong>时间</strong>：前221—220年<br>
-              <strong>措施</strong>：皇帝制、郡县制、推恩令、独尊儒术<br>
-              <strong>意义</strong>：统一多民族国家初步形成
-            </div>
-          </div>
+        <div class="point">
+          <strong>2. 保温作用</strong><br>
+          • 大气吸收地面辐射→大气逆辐射→补偿地面热量损失。<br>
+          • 阴天温差小，晴天温差大；夜晚多云保温强。
         </div>
-
-        <div class="folder">
-          <div class="folder-title">隋唐：繁荣与开放</div>
-          <div class="folder-body">
-            <div class="point">
-              <strong>制度</strong>：三省六部制、科举制<br>
-              <strong>经济</strong>：均田制、大运河<br>
-              <strong>文化</strong>：唐诗、三教并行
-            </div>
-          </div>
-        </div>
-
-        <div class="folder">
-          <div class="folder-title">宋元：民族融合与经济重心南移</div>
-          <div class="folder-body">
-            <div class="point">
-              <strong>宋</strong>：重文轻武、商品经济繁荣<br>
-              <strong>元</strong>：行省制度、疆域空前扩大<br>
-              <strong>趋势</strong>：经济重心彻底南移
-            </div>
-          </div>
-        </div>
-
-        <div class="folder">
-          <div class="folder-title">明清：君主专制顶峰</div>
-          <div class="folder-body">
-            <div class="point">
-              <strong>措施</strong>：废丞相、设内阁、军机处<br>
-              <strong>对外</strong>：海禁、闭关锁国<br>
-              <strong>结局</strong>：逐渐落后世界潮流
-            </div>
-          </div>
-        </div>
-
-        <div class="folder">
-          <div class="folder-title">近代史：1840—1949</div>
-          <div class="folder-body">
-            <div class="point">
-              <strong>阶段</strong>：旧民主主义 → 新民主主义革命<br>
-              <strong>关键</strong>：鸦片战争、甲午战争、辛亥革命、五四运动、抗战、解放战争<br>
-              <strong>主线</strong>：民族独立与近代化
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
-
     <div class="folder">
-      <div class="folder-title">📘 二、按必修+选修目录顺序</div>
+      <div class="folder-title">第二节 热力环流与风</div>
       <div class="folder-body">
-        <div class="folder">
-          <div class="folder-title">必修1：政治制度史</div>
-          <div class="folder-body">
-            <div class="point">
-              <span class="label">中国</span>君主专制演进<br>
-              <span class="label">西方</span>雅典民主、罗马法、近代代议制
-            </div>
-          </div>
+        <div class="point">
+          <strong>1. 热力环流</strong><br>
+          • 根本原因：地面冷热不均。<br>
+          • 过程：热→上升→低压；冷→下沉→高压。<br>
+          • 实例：海陆风、山谷风、城市热岛环流。
         </div>
-        <div class="folder">
-          <div class="folder-title">必修2：经济发展史</div>
-          <div class="folder-body">
-            <div class="point">
-              农业、手工业、商业、资本主义萌芽、工业革命、世界市场、新中国经济建设
-            </div>
-          </div>
+        <div class="point">
+          <strong>2. 大气水平运动——风</strong><br>
+          • 直接动力：水平气压梯度力（垂直等压线，高压→低压）。<br>
+          • 地转偏向力：北半球右偏，南半球左偏，只改向不改变风速。<br>
+          • 摩擦力：减小风速。<br>
+          • 近地面风：斜穿等压线；高空风：平行于等压线。
         </div>
-        <div class="folder">
-          <div class="folder-title">必修3：思想文化史</div>
-          <div class="folder-body">
-            <div class="point">
-              百家争鸣、儒学正统化、西学东渐、新文化运动、马克思主义传播
-            </div>
-          </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第三节 气压带和风带</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 三圈环流</strong><br>
+          • 七个气压带：赤道低压、副热带高压（2个）、副极地低压（2个）、极地高压（2个）。<br>
+          • 六个风带：信风带（2）、西风带（2）、极地东风带（2）。
+        </div>
+        <div class="point">
+          <strong>2. 季节移动</strong><br>
+          • 随太阳直射点移动。<br>
+          • 北半球夏季北移，冬季南移。
+        </div>
+        <div class="point">
+          <strong>3. 海陆分布对气压带的影响</strong><br>
+          • 北半球：海陆热力差异大→气压带断裂成块状。<br>
+          • 夏季：亚欧大陆形成亚洲低压，海洋高压。<br>
+          • 冬季：亚欧大陆形成亚洲高压，海洋低压。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第四节 季风环流</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 东亚季风</strong><br>
+          • 成因：海陆热力性质差异。<br>
+          • 夏季：东南风，温暖湿润。<br>
+          • 冬季：西北风，寒冷干燥。
+        </div>
+        <div class="point">
+          <strong>2. 南亚季风</strong><br>
+          • 成因：海陆热力差异 + 气压带风带季节移动。<br>
+          • 夏季：西南风，高温多雨。<br>
+          • 冬季：东北风，温和干燥。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第五节 常见天气系统</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 锋面系统</strong><br>
+          <strong>冷锋：</strong>冷气团主动→降温、大风、雨雪，雨区在锋后。<br>
+          <strong>暖锋：</strong>暖气团主动→连续性降水，雨区在锋前。<br>
+          <strong>准静止锋：</strong>冷暖气团势均力敌→梅雨（江淮）、昆明准静止锋。
+        </div>
+        <div class="point">
+          <strong>2. 气旋与反气旋</strong><br>
+          <strong>气旋（低压）：</strong>上升气流→阴雨，北半球逆时针辐合。<br>
+          <strong>反气旋（高压）：</strong>下沉气流→晴朗，北半球顺时针辐散。<br>
+          • 台风：热带气旋。<br>
+          • 伏旱、寒潮：反气旋。
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- ============================================== -->
-  <!-- 政治 -->
-  <!-- ============================================== -->
-  <div class="section" id="politics">
+<div class="folder">
+  <div class="folder-title">第四章 水循环与洋流</div>
+  <div class="folder-body">
     <div class="folder">
-      <div class="folder-title">📖 经济生活</div>
+      <div class="folder-title">第一节 水循环</div>
       <div class="folder-body">
-        <div class="point"><strong>价格影响因素</strong>：价值决定、供求影响、政策、货币供应</div>
-        <div class="point"><strong>消费</strong>：影响因素、消费心理、正确消费观</div>
-        <div class="point"><strong>企业经营</strong>：战略、创新、信誉、社会责任</div>
-        <div class="point"><strong>分配</strong>：按劳分配、生产要素分配、共同富裕</div>
-        <div class="point"><strong>市场经济</strong>：市场调节、宏观调控、新发展理念</div>
+        <div class="point">
+          <strong>1. 水循环类型</strong><br>
+          • 海陆间循环（大循环）：最重要，使陆地水更新。<br>
+          • 陆地内循环：补给少。<br>
+          • 海上内循环：水量最大。
+        </div>
+        <div class="point">
+          <strong>2. 主要环节</strong><br>
+          蒸发、降水、水汽输送、地表径流、地下径流、下渗、植物蒸腾。
+        </div>
+        <div class="point">
+          <strong>3. 地理意义</strong><br>
+          • 维持全球水量平衡。<br>
+          • 更新陆地淡水资源。<br>
+          • 调节热量平衡。<br>
+          • 塑造地表形态。
+        </div>
       </div>
     </div>
     <div class="folder">
-      <div class="folder-title">⚖️ 政治生活</div>
+      <div class="folder-title">第二节 洋流</div>
       <div class="folder-body">
-        <div class="point">公民：权利、义务、参与政治生活途径</div>
-        <div class="point">政府：职能、宗旨、依法行政、接受监督</div>
-        <div class="point">人大制度、政党制度、民族区域自治、基层群众自治</div>
-        <div class="point">国际社会：国家利益、和平发展、人类命运共同体</div>
-      </div>
-    </div>
-    <div class="folder">
-      <div class="folder-title">🎨 文化生活</div>
-      <div class="folder-body">
-        <div class="point">文化作用、文化传承、文化创新、民族精神、文化自信</div>
-      </div>
-    </div>
-    <div class="folder">
-      <div class="folder-title">🧠 生活与哲学</div>
-      <div class="folder-body">
-        <div class="point">唯物论、认识论、辩证法、历史唯物主义、价值观</div>
+        <div class="point">
+          <strong>1. 洋流分类</strong><br>
+          • 按性质：暖流（低纬→高纬）、寒流（高纬→低纬）。<br>
+          • 按成因：风海流、密度流、补偿流。
+        </div>
+        <div class="point">
+          <strong>2. 分布规律</strong><br>
+          • 中低纬度：北顺南逆，西暖东寒。<br>
+          • 北半球中高纬：逆时针，西寒东暖。<br>
+          • 南半球西风漂流：寒流。<br>
+          • 北印度洋：冬逆夏顺。
+        </div>
+        <div class="point">
+          <strong>3. 洋流影响</strong><br>
+          • 气候：暖流增温增湿，寒流降温减湿。<br>
+          • 渔场：寒暖流交汇→北海道、纽芬兰、北海渔场；上升流→秘鲁渔场。<br>
+          • 航运：顺流加速，逆流减速；海雾影响航行。<br>
+          • 污染：加快净化，扩大范围。
+        </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- ============================================== -->
-  <!-- 地理（湘教版） -->
-  <!-- ============================================== -->
-  <div class="section" id="geo">
-    <div class="folder">
-      <div class="folder-title">🌍 必修基础知识（湘教版）</div>
-      <div class="folder-body">
-        <div class="point">地球运动、大气环流、天气系统、水循环、洋流、地质作用、自然带</div>
-        <div class="point">人口增长、人口迁移、城市化、农业区位、工业区位、交通、服务业</div>
-      </div>
+<div class="folder">
+  <div class="folder-title">第五章 自然环境的整体性与差异性</div>
+  <div class="folder-body">
+    <div class="point">
+      <strong>1. 整体性</strong><br>
+      • 要素：地形、气候、水文、生物、土壤相互联系、相互影响。<br>
+      • “牵一发而动全身”，某一要素变化会导致整体改变。
     </div>
-
-    <div class="folder">
-      <div class="folder-title">📝 地理万能答题模板</div>
-      <div class="folder-body">
-        <div class="template-card">
-          <h4>自然地理特征描述</h4>
-          位置 → 地形 → 气候 → 水文 → 土壤 → 植被 → 资源
-        </div>
-        <div class="template-card">
-          <h4>农业区位条件</h4>
-          自然：气候、地形、土壤、水源<br>
-          人文：市场、交通、政策、科技、劳动力
-        </div>
-        <div class="template-card">
-          <h4>工业区位条件</h4>
-          原料、能源、市场、交通、技术、劳动力、政策、环境、产业基础
-        </div>
-        <div class="template-card">
-          <h4>城市化问题</h4>
-          交通拥堵、环境污染、用地紧张、住房困难、社会问题
-        </div>
-        <div class="template-card">
-          <h4>生态问题答题</h4>
-          成因：自然+人为<br>
-          危害：对气候/水文/生物/土壤<br>
-          措施：工程+生物+管理
-        </div>
-      </div>
+    <div class="point">
+      <strong>2. 差异性——地域分异规律</strong><br>
+      • 纬度地带分异：热量为基础，南北更替。<br>
+      • 干湿度地带分异：水分为基础，东西更替。<br>
+      • 垂直分异：海拔升高，水热变化，自然带垂直更替。
     </div>
-
-    <div class="folder">
-      <div class="folder-title">🗺️ 中国各区域地理特征</div>
-      <div class="folder-body">
-        <div class="point"><strong>南方地区</strong>：亚热带季风、水田、丘陵、有色金属、水运发达</div>
-        <div class="point"><strong>北方地区</strong>：温带季风、旱地、煤铁石油、平原广布</div>
-        <div class="point"><strong>西北地区</strong>：干旱、光照强、畜牧业、绿洲农业、荒漠化</div>
-        <div class="point"><strong>青藏地区</strong>：高寒、河谷农业、太阳能地热能、生态脆弱</div>
-      </div>
+    <div class="point">
+      <strong>3. 非地带性现象</strong><br>
+      受地形、洋流、水源影响，如沙漠中的绿洲、安第斯山南段东西差异。
     </div>
   </div>
+</div>
 
+<div class="footer">
+该网站由@石龙子/yiyi独立制作，仅供学习交流
 </div>
 
 <script>
-// 标签切换
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    const target = tab.dataset.target;
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('show'));
-    document.getElementById(target).classList.add('show');
-  });
-});
-
-// 折叠面板
-document.querySelectorAll('.folder-title').forEach(title => {
-  title.addEventListener('click', () => {
-    const folder = title.parentElement;
-    folder.classList.toggle('open');
+// 折叠
+document.querySelectorAll('.folder-title').forEach(t => {
+  t.addEventListener('click', () => {
+    t.classList.toggle('active');
   });
 });
 
 // 夜间模式
-const themeBtn = document.getElementById('themeToggle');
+const themeBtn = document.getElementById('themeBtn');
 themeBtn.addEventListener('click', () => {
-  const isDark = document.documentElement.toggleAttribute('data-theme');
-  themeBtn.textContent = isDark ? '日间模式' : '夜间模式';
+  const isDark = document.documentElement.dataset.theme === 'dark';
+  if (isDark) {
+    document.documentElement.dataset.theme = '';
+    themeBtn.textContent = '夜间模式';
+  } else {
+    document.documentElement.dataset.theme = 'dark';
+    themeBtn.textContent = '日间模式';
+  }
 });
 
-// 搜索功能
+// 搜索高亮
 const search = document.getElementById('search');
-search.addEventListener('input', () => {
-  const val = search.value.toLowerCase();
-  document.querySelectorAll('.point, .template-card, .folder-title').forEach(el => {
-    const txt = el.textContent.toLowerCase();
-    el.style.display = txt.includes(val) ? '' : 'none';
+search.addEventListener('input', e => {
+  const val = e.target.value.trim().toLowerCase();
+  const points = document.querySelectorAll('.point');
+  points.forEach(p => {
+    const text = p.textContent.toLowerCase();
+    if (val === '') {
+      p.innerHTML = p.innerHTML.replace(/<\/?span[^>]*>/g, '');
+    } else {
+      if (text.includes(val)) {
+        const reg = new RegExp(val, 'gi');
+        p.innerHTML = p.textContent.replace(reg, m => `<span class="highlight">${m}</span>`);
+      } else {
+        p.innerHTML = p.innerHTML.replace(/<\/?span[^>]*>/g, '');
+      }
+    }
   });
+});
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>历史知识点</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,"Microsoft YaHei",sans-serif}
+
+  :root{
+    --bg:#fdf6fc;
+    --card:#fff;
+    --text:#222;
+    --sub:#666;
+    --dot:#f8e3f1;
+    --main:#d45a7f;
+    --line:#f0e5ee;
+  }
+  [data-theme="dark"]{
+    --bg:#1a161d;
+    --card:#2a2430;
+    --text:#eee;
+    --sub:#aaa;
+    --dot:#332a30;
+    --main:#f18ba9;
+    --line:#443840;
+  }
+
+  body{
+    background:var(--bg);
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size:22px 22px;
+    color:var(--text);
+    padding-bottom:80px;
+  }
+
+  .header{
+    position:sticky;
+    top:0;
+    background:var(--card);
+    padding:14px 16px;
+    border-radius:14px;
+    margin:14px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.06);
+    font-weight:bold;
+    text-align:center;
+    z-index:10;
+  }
+
+  .bar{
+    display:flex;
+    gap:10px;
+    margin-bottom:10px;
+  }
+
+  #search{
+    flex:1;
+    padding:10px 14px;
+    border-radius:10px;
+    border:1px solid var(--dot);
+    background:var(--card);
+    color:var(--text);
+    font-size:15px;
+  }
+
+  #themeBtn{
+    padding:10px 14px;
+    border-radius:10px;
+    border:none;
+    background:var(--main);
+    color:#fff;
+    font-weight:bold;
+    white-space:nowrap;
+  }
+
+  .folder{
+    margin:14px;
+    border-radius:14px;
+    background:var(--card);
+    overflow:hidden;
+    box-shadow:0 2px 6px rgba(0,0,0,0.04);
+  }
+
+  .folder-title{
+    padding:16px;
+    font-weight:bold;
+    cursor:pointer;
+    position:relative;
+  }
+  .folder-title::after{
+    content:"+";
+    position:absolute;
+    right:16px;
+    top:16px;
+  }
+  .folder-title.active::after{content:"−";}
+
+  .folder-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+  .folder-title.active + .folder-body{
+    max-height:20000px;
+  }
+
+  .point{
+    padding:12px 16px;
+    border-top:1px solid var(--line);
+    line-height:1.7;
+    font-size:15px;
+  }
+
+  .point strong{
+    color:var(--main);
+  }
+
+  .footer{
+    text-align:center;
+    font-size:12px;
+    color:var(--sub);
+    margin:40px 0;
+  }
+
+  .highlight{
+    background:#fff580;
+    color:#000;
+    padding:2px 4px;
+    border-radius:4px;
+  }
+  [data-theme="dark"] .highlight{
+    background:#ffdd57;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="bar">
+    <input type="text" id="search" placeholder="搜索知识点…">
+    <button id="themeBtn">夜间模式</button>
+  </div>
+  <div style="margin-top:6px">历史知识点</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">必修上册 中国古代史</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第一单元 从中华文明起源到秦汉大一统</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 旧石器时代</strong><br>
+时间：距今约300万年—1万年<br>
+代表：元谋人（距今约170万年，云南）、北京人（距今约70万—20万年，北京周口店）<br>
+特征：打制石器，采集狩猎，使用天然火，群居生活。
+</div>
+<div class="point">
+<strong>2. 新石器时代</strong><br>
+时间：距今约1万年—5000年<br>
+代表：仰韶文化（黄河中游，粟作农业，彩陶）、河姆渡文化（长江下游，水稻，干栏式建筑）、龙山文化、红山文化、良渚文化（玉器，礼制，早期国家形态）<br>
+特征：磨制石器，原始农业出现，定居生活，私有制与阶级萌芽。
+</div>
+<div class="point">
+<strong>3. 三皇五帝与早期国家</strong><br>
+禅让制：尧→舜→禹，选贤任能。<br>
+约公元前2070年，禹建立夏朝，世袭制取代禅让制，“家天下”确立。
+</div>
+<div class="point">
+<strong>4. 夏商周时期</strong><br>
+夏：前2070—前1600年，二里头文化，国家机构成熟。<br>
+商：前1600—前1046年，甲骨文成熟，青铜文明发达，内外服制管理地方。<br>
+西周：前1046—前771年，分封制、宗法制、礼乐制、井田制四大制度支撑统治。
+</div>
+<div class="point">
+<strong>分封制</strong><br>
+目的：巩固周王室统治，拓展疆域。<br>
+对象：王族子弟、功臣、先代贵族后裔。<br>
+内容：周天子分封土地与人民，诸侯需服从王命、定期朝贡、随从作战。<br>
+影响：扩大统治疆域，巩固周王室；后期诸侯势力膨胀，导致分裂割据。
+</div>
+<div class="point">
+<strong>宗法制</strong><br>
+核心：嫡长子继承制。<br>
+特点：血缘关系与政治关系紧密结合，家国一体。<br>
+影响：维护贵族等级秩序，深刻影响后世宗族与伦理观念。
+</div>
+<div class="point">
+<strong>5. 春秋战国大变革</strong><br>
+时间：前770—前221年<br>
+政治：分封制瓦解，诸侯争霸→战国七雄（齐楚燕韩赵魏秦），变法运动兴起。<br>
+经济：铁器牛耕推广，井田制瓦解，土地私有制逐步确立。<br>
+军事：争霸战争转向兼并战争，统一趋势不断加强。
+</div>
+<div class="point">
+<strong>商鞅变法</strong><br>
+时间：公元前356年，秦国秦孝公任用商鞅。<br>
+目的：富国强兵，在兼并战争中取胜。<br>
+内容：废井田开阡陌，承认土地私有；奖励耕织与军功；推行县制；实行连坐法；重农抑商。<br>
+结果：变法彻底成功，秦国国力迅速增强，为秦统一六国奠定基础。
+</div>
+<div class="point">
+<strong>百家争鸣</strong><br>
+儒家：孔子（仁、礼、德治）、孟子（仁政、民贵君轻）、荀子（礼法并用）。<br>
+道家：老子（无为而治、小国寡民）、庄子（逍遥自由）。<br>
+法家：韩非（法治、中央集权、严刑峻法）。<br>
+墨家：墨子（兼爱、非攻、尚贤、节用）。<br>
+影响：中国历史上第一次思想解放运动，奠定中华传统文化基础。
+</div>
+<div class="point">
+<strong>秦统一与中央集权制度</strong><br>
+时间：公元前221年，嬴政统一六国。<br>
+制度：皇帝制度、三公九卿制、郡县制。<br>
+巩固统一：统一文字、货币、度量衡、车轨；修建驰道、长城、灵渠。<br>
+灭亡：暴政（严刑峻法、繁重徭役兵役）引发农民起义，公元前207年灭亡。
+</div>
+<div class="point">
+<strong>西汉巩固大一统</strong><br>
+汉初：休养生息政策，出现文景之治。<br>
+汉武帝：推行推恩令削弱王国势力；罢黜百家、独尊儒术；盐铁官营；派卫青霍去病北击匈奴；派张骞通西域。<br>
+公元前60年设西域都护，标志西域正式归属中央政权。
+</div>
+<div class="point">
+<strong>东汉</strong><br>
+刘秀建立东汉，光武中兴；中后期外戚与宦官交替专权；蔡伦改进造纸术；220年东汉灭亡。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第二单元 三国两晋南北朝</div>
+<div class="folder-body">
+<div class="point">
+<strong>三国鼎立</strong><br>
+220年曹丕建魏，221年刘备建蜀，229年孙权建吴，三国鼎立局面形成。
+</div>
+<div class="point">
+<strong>西晋统一与灭亡</strong><br>
+280年西晋统一全国；316年被匈奴所灭，北方进入五胡十六国时期。
+</div>
+<div class="point">
+<strong>东晋南朝</strong><br>
+士族门阀垄断政治；北方人口大量南迁，江南地区开发，经济重心开始南移。
+</div>
+<div class="point">
+<strong>北魏孝文帝改革</strong><br>
+时间：5世纪后期<br>
+内容：迁都洛阳；穿汉服、说汉话、改汉姓、与汉族通婚；尊崇儒学，推行封建化改革。<br>
+影响：促进北方民族大交融，推动北方社会经济文化发展。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第三单元 隋唐繁荣与开放</div>
+<div class="folder-body">
+<div class="point">
+<strong>隋朝</strong><br>
+581年杨坚建隋，589年统一全国。<br>
+创立三省六部制、科举制；开凿大运河，沟通南北经济。<br>
+因暴政速亡，618年灭亡。
+</div>
+<div class="point">
+<strong>唐朝政治制度</strong><br>
+三省六部制：中书省决策、门下省审议、尚书省执行，分工明确，提高效率，分割相权加强皇权。<br>
+科举制：扩大统治基础，提高官员文化素质，促进社会阶层流动。
+</div>
+<div class="point">
+<strong>贞观之治、开元盛世</strong><br>
+唐太宗贞观之治、唐玄宗开元盛世为唐朝鼎盛时期。<br>
+安史之乱（755—763年）使唐朝由盛转衰；此后藩镇割据、宦官专权、朋党之争加速灭亡。
+</div>
+<div class="point">
+<strong>民族与对外关系</strong><br>
+文成公主入藏，密切唐蕃关系；玄奘西行天竺取经；鉴真东渡日本传播文化。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第四单元 宋元时期</div>
+<div class="folder-body">
+<div class="point">
+<strong>北宋加强中央集权</strong><br>
+措施：收精兵、削实权、制钱谷；重文轻武；派文臣担任知州，设通判监督。<br>
+影响：加强中央集权，消除地方割据隐患，但造成积贫积弱局面。
+</div>
+<div class="point">
+<strong>王安石变法</strong><br>
+目的：富国强兵，挽救北宋统治危机。<br>
+内容：青苗法、募役法、方田均税法、市易法、保甲法、将兵法。<br>
+结果：取得一定成效，但因触犯大官僚大地主利益，最终失败。
+</div>
+<div class="point">
+<strong>元朝</strong><br>
+推行行省制度，是中国省制的开端。<br>
+设宣政院管理西藏地区；设澎湖巡检司管辖澎湖与琉球（今台湾）。
+</div>
+<div class="point">
+<strong>科技文化</strong><br>
+活字印刷术、指南针、火药三大发明成熟并外传；理学形成；宋词、元曲繁荣。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第五单元 明清时期</div>
+<div class="folder-body">
+<div class="point">
+<strong>明朝</strong><br>
+废丞相，权分六部；设内阁辅助皇帝；建立厂卫特务机构；郑和下西洋宣扬国威；长期推行海禁政策。
+</div>
+<div class="point">
+<strong>清朝</strong><br>
+设军机处，君主专制制度达到顶峰；推行改土归流加强对西南边疆管理；实行闭关锁国政策，严格限制对外贸易。<br>
+疆域奠定：奠定现代中国版图基础。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">必修下册 中国近现代史+世界史</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第一单元 近代列强侵华与中国人民抗争</div>
+<div class="folder-body">
+<div class="point">
+<strong>鸦片战争 1840—1842</strong><br>
+根本原因：英国完成工业革命，打开中国市场。<br>
+结果：签订《南京条约》，割香港岛，赔款2100万银元，五口通商，协定关税。<br>
+影响：中国开始沦为半殖民地半封建社会，近代史开端。
+</div>
+<div class="point">
+<strong>第二次鸦片战争 1856—1860</strong><br>
+结果：签订《天津条约》《北京条约》；英法联军火烧圆明园；半殖民地化程度进一步加深。
+</div>
+<div class="point">
+<strong>甲午中日战争 1894—1895</strong><br>
+结果：签订《马关条约》，割台湾及澎湖列岛，赔款2亿两，允许列强在华设厂。<br>
+影响：半殖民地化程度大大加深，列强掀起瓜分中国狂潮。
+</div>
+<div class="point">
+<strong>八国联军侵华 1900—1901</strong><br>
+结果：签订《辛丑条约》，严禁中国人民反帝，列强驻兵北京至山海关铁路要地。<br>
+影响：中国完全沦为半殖民地半封建社会。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第二单元 近代探索与救亡运动</div>
+<div class="folder-body">
+<div class="point">
+<strong>太平天国运动 1851—1864</strong><br>
+爆发：金田起义。<br>
+纲领：《天朝田亩制度》（平均土地）、《资政新篇》（最早发展资本主义方案）。<br>
+意义：反封建反侵略的农民战争，沉重打击清王朝与列强侵略势力。
+</div>
+<div class="point">
+<strong>洋务运动 19世纪60—90年代</strong><br>
+口号：自强、求富。<br>
+内容：创办军事工业、民用工业，建立新式海军，兴办新式学堂。<br>
+结果：甲午战争战败宣告破产，是中国近代化的开端。
+</div>
+<div class="point">
+<strong>戊戌变法 1898</strong><br>
+领导：康有为、梁启超，依靠光绪帝。<br>
+内容：改革政府机构，发展资本主义工商业，废八股兴学堂，训练新式军队。<br>
+结果：慈禧发动戊戌政变，变法失败，起到思想启蒙作用。
+</div>
+<div class="point">
+<strong>辛亥革命 1911</strong><br>
+组织：中国同盟会，纲领“三民主义”。<br>
+爆发：1911年武昌起义。<br>
+成果：1912年中华民国成立，清帝退位，推翻君主专制制度。<br>
+意义：建立资产阶级共和国，民主共和观念深入人心。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第三单元 新民主主义革命</div>
+<div class="folder-body">
+<div class="point">
+<strong>五四运动 1919</strong><br>
+导火线：巴黎和会中国外交失败。<br>
+口号：外争主权，内除国贼。<br>
+意义：彻底反帝反封建的爱国运动，新民主主义革命开端，促进马克思主义传播。
+</div>
+<div class="point">
+<strong>中国共产党成立 1921</strong><br>
+中共一大召开，中国革命面貌焕然一新。
+</div>
+<div class="point">
+<strong>国民革命运动 1924—1927</strong><br>
+国共第一次合作，北伐战争基本推翻北洋军阀统治；四一二、七一五反革命政变，合作破裂。
+</div>
+<div class="point">
+<strong>土地革命战争 1927—1937</strong><br>
+南昌起义：打响武装反抗国民党第一枪。<br>
+井冈山道路：农村包围城市，武装夺取政权。<br>
+长征1934—1936：遵义会议成为生死攸关转折点，胜利会师保存革命骨干。
+</div>
+<div class="point">
+<strong>抗日战争 1931—1945</strong><br>
+1931九一八事变局部抗战；1937七七事变全面抗战。<br>
+正面战场与敌后战场相互配合；1945年取得胜利，是民族复兴的转折点。
+</div>
+<div class="point">
+<strong>解放战争 1946—1949</strong><br>
+战略防御→战略反攻→三大战役决战→渡江战役。<br>
+1949年10月1日中华人民共和国成立，新民主主义革命胜利。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第四单元 世界古代与近代</div>
+<div class="folder-body">
+<div class="point">
+<strong>古希腊罗马文明</strong><br>
+雅典民主政治：公民大会、陪审法庭，直接民主。<br>
+罗马法：《十二铜表法》成文法开端，《查士丁尼民法大全》体系完备，影响近代西方法制。
+</div>
+<div class="point">
+<strong>新航路开辟 15—16世纪</strong><br>
+人物：迪亚士、哥伦布、达·伽马、麦哲伦。<br>
+影响：世界开始连成整体，世界市场雏形出现，欧洲殖民扩张与资本原始积累。
+</div>
+<div class="point">
+<strong>文艺复兴 14—16世纪</strong><br>
+核心：人文主义，解放思想，推动近代科学与文化产生。
+</div>
+<div class="point">
+<strong>启蒙运动 17—18世纪</strong><br>
+核心：理性主义，为资产阶级革命与资本主义制度建立提供理论基础。
+</div>
+<div class="point">
+<strong>英美法资产阶级革命</strong><br>
+英国：1689《权利法案》确立君主立宪制。<br>
+美国：独立战争，1787宪法确立联邦制三权分立。<br>
+法国：大革命，《人权宣言》传播自由平等思想。
+</div>
+<div class="point">
+<strong>两次工业革命</strong><br>
+第一次工业革命：蒸汽时代，工厂制，世界市场初步形成。<br>
+第二次工业革命：电气时代，垄断组织，资本主义世界体系最终形成。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第五单元 世界现代史</div>
+<div class="folder-body">
+<div class="point">
+<strong>第一次世界大战 1914—1918</strong><br>
+帝国主义争霸战争，动摇欧洲霸权。
+</div>
+<div class="point">
+<strong>俄国十月革命 1917</strong><br>
+第一次胜利的社会主义革命，建立第一个社会主义国家。
+</div>
+<div class="point">
+<strong>第二次世界大战 1939—1945</strong><br>
+世界反法西斯战争胜利，奠定战后国际格局基础。
+</div>
+<div class="point">
+<strong>冷战 1947—1991</strong><br>
+美苏两极对峙，北约与华约对抗；1991苏联解体，冷战结束。
+</div>
+<div class="point">
+<strong>当今世界格局</strong><br>
+多极化趋势加强，经济全球化，和平与发展成为时代主题。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">选择性必修1 国家制度与社会治理</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第1课 中国古代政治制度的发展</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 中央官制演变</strong><br>
+秦：三公九卿制（丞相、太尉、御史大夫）。<br>
+汉：中外朝制，削弱相权加强皇权。<br>
+隋唐：三省六部制，中书决策、门下审议、尚书执行，分工明确，提高效率，分割相权。<br>
+宋：二府三司制，行政、军事、财政分权。<br>
+元：中书省一省制。<br>
+明：废丞相，设内阁，内阁仅为皇帝顾问机构。<br>
+清：军机处，君主专制达到顶峰。
+</div>
+<div class="point">
+<strong>2. 地方行政制度</strong><br>
+秦：郡县制。<br>
+汉：郡国并行制，推恩令解决王国问题。<br>
+唐：道州县三级，后期藩镇割据。<br>
+宋：路州县，文臣知州，设通判监督。<br>
+元：行省制，省路府州县，奠定后世省制基础。<br>
+明清：省府县，改土归流加强边疆控制。
+</div>
+<div class="point">
+<strong>3. 选官制度</strong><br>
+先秦：世卿世禄制，血缘世袭。<br>
+汉：察举制，举孝廉，以德取人。<br>
+魏晋南北朝：九品中正制，以门第取人，士族垄断官场。<br>
+隋至清：科举制，以才取人，扩大统治基础，加强中央集权，促进社会流动。
+</div>
+<div class="point">
+<strong>4. 监察与谏议制度</strong><br>
+秦：御史大夫掌监察。<br>
+汉：刺史制度监察地方。<br>
+唐：御史台。<br>
+宋：提点刑狱司、通判。<br>
+明清：都察院、六科给事中、按察使司。<br>
+作用：整顿吏治，加强皇权，本质为人治统治工具。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第2课 西方国家古代与近代政治制度</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 雅典民主政治</strong><br>
+时间：公元前6—前4世纪。<br>
+机构：公民大会（最高权力机关）、五百人议事会、陪审法庭。<br>
+特点：人民主权、轮番而治、直接民主。<br>
+局限：仅成年男性公民享有民主，奴隶、妇女、外邦人被排除。
+</div>
+<div class="point">
+<strong>2. 罗马法</strong><br>
+起源：《十二铜表法》，罗马第一部成文法。<br>
+发展：公民法→万民法。<br>
+体系：《查士丁尼民法大全》标志罗马法体系完备。<br>
+影响：近代欧洲法律渊源，确立私有财产神圣不可侵犯、契约自由等原则。
+</div>
+<div class="point">
+<strong>3. 英国君主立宪制</strong><br>
+确立：1689年《权利法案》，限制王权，确立议会主权。<br>
+发展：责任内阁制形成，首相掌握行政大权，内阁对议会负责。<br>
+特点：君主统而不治，议会至上。
+</div>
+<div class="point">
+<strong>4. 美国民主共和制</strong><br>
+1787年宪法，联邦制、三权分立、人民主权原则。<br>
+立法（国会）、行政（总统）、司法（最高法院）相互制衡。
+</div>
+<div class="point">
+<strong>5. 法国共和制</strong><br>
+1875年宪法最终确立共和制，总统与议会分权。
+</div>
+<div class="point">
+<strong>6. 德国君主立宪制</strong><br>
+1871年宪法，皇帝拥有极大权力，专制主义色彩浓厚。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第3课 中国近代至当代政治制度</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 清末预备立宪</strong><br>
+目的：挽救清朝统治，遏制革命。<br>
+内容：设咨议局、资政院，颁布《钦定宪法大纲》。<br>
+结果：暴露专制本质，加速清朝灭亡。
+</div>
+<div class="point">
+<strong>2. 中华民国政治制度</strong><br>
+《中华民国临时约法》，主权在民，三权分立，责任内阁制。<br>
+北洋军阀时期：军阀专制，民主制度遭破坏。<br>
+南京国民政府：一党专政，五院制。
+</div>
+<div class="point">
+<strong>3. 中国现代政治制度</strong><br>
+根本政治制度：人民代表大会制度。<br>
+政党制度：中国共产党领导的多党合作和政治协商制度。<br>
+民族制度：民族区域自治制度。<br>
+基层制度：基层群众自治制度。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第4课 中国古代法治与教化</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 礼法结合</strong><br>
+先秦：法家重法，儒家重礼。<br>
+汉代：外儒内法，德主刑辅。<br>
+唐代：《唐律疏议》实现礼法合一，影响深远。
+</div>
+<div class="point">
+<strong>2. 社会教化</strong><br>
+乡约、族规、学校教育、科举体系，以儒家伦理道德控制基层社会。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第5课 中国古代基层治理与社会保障</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 基层组织</strong><br>
+秦汉：乡里制。<br>
+隋唐：邻保制。<br>
+宋代：保甲制。<br>
+明清：里甲制、保甲制。<br>
+功能：征发赋役、维护治安、教化民众。
+</div>
+<div class="point">
+<strong>2. 社会保障</strong><br>
+仓储制度：常平仓、义仓、社仓。<br>
+社会救助：荒政、养济院、育婴堂，政府主导，民间辅助。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第6课 西方近代法治与社会保障</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 西方法治原则</strong><br>
+天赋人权、法律至上、权力制衡、程序正义、法律面前人人平等。
+</div>
+<div class="point">
+<strong>2. 现代社会保障</strong><br>
+德国首创现代社会保险制度；二战后福利国家普及；高福利政策带来财政负担与效率问题。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">选择性必修2 经济与社会生活</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第1课 从食物采集到食物生产</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 农业革命</strong><br>
+时间：约1万年前。<br>
+起源中心：西亚、东亚、美洲独立起源。<br>
+中国：长江流域水稻，黄河流域粟。<br>
+意义：人类从迁徙走向定居，私有制、阶级、国家逐步产生。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第2课 手工业与商业发展</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 中国古代手工业</strong><br>
+官营手工业：冶金、制瓷、丝织长期世界领先。<br>
+民营手工业：明清时期出现资本主义萌芽。<br>
+家庭手工业：自然经济重要组成部分。
+</div>
+<div class="point">
+<strong>2. 中国古代商业</strong><br>
+周代：工商食官。<br>
+汉代：丝绸之路开通。<br>
+唐代：坊市制度严格。<br>
+宋代：坊市界限打破，纸币出现，海外贸易繁荣。<br>
+明清：商帮（晋商、徽商）兴起，白银货币化，实行闭关锁国。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第3课 古代村落、城市与交通</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 村落与城市</strong><br>
+农业发展→村落形成→集市→城市。<br>
+唐长安：布局严整，坊市分离。<br>
+宋开封、临安：打破时空限制，商业城市繁荣。
+</div>
+<div class="point">
+<strong>2. 古代交通</strong><br>
+秦：驰道、直道。<br>
+隋：大运河沟通南北。<br>
+元：驿站系统发达。<br>
+海上丝绸之路：唐宋元时期鼎盛。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第4课 近代中国经济结构变动</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 自然经济解体</strong><br>
+列强商品倾销与原料掠夺，中国逐步卷入资本主义世界市场。
+</div>
+<div class="point">
+<strong>2. 洋务运动</strong><br>
+军事工业：安庆内军械所、江南制造总局。<br>
+民用工业：轮船招商局、开平煤矿。<br>
+意义：中国近代工业化起步，刺激民族资本主义产生。
+</div>
+<div class="point">
+<strong>3. 民族资本主义发展</strong><br>
+19世纪六七十年代产生；甲午战后初步发展；一战期间短暂春天；国民政府时期曲折发展；新中国成立后被社会主义改造。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第5课 现代中国经济建设</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 过渡时期</strong><br>
+一五计划：优先发展重工业，奠定工业化初步基础。<br>
+三大改造：完成对农业、手工业、资本主义工商业改造，建立社会主义经济制度。
+</div>
+<div class="point">
+<strong>2. 社会主义建设探索</strong><br>
+中共八大正确分析国内主要矛盾；大跃进、人民公社化运动出现失误；文革时期经济遭受严重破坏。
+</div>
+<div class="point">
+<strong>3. 改革开放</strong><br>
+农村：家庭联产承包责任制。<br>
+城市：国有企业改革。<br>
+开放格局：经济特区—沿海开放城市—沿海经济开放区—内地。<br>
+目标：建立社会主义市场经济体制。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第6课 新航路开辟与世界市场</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 新航路开辟</strong><br>
+影响：世界连为整体，世界市场雏形出现，欧洲商业革命、价格革命，殖民扩张加速资本原始积累。
+</div>
+<div class="point">
+<strong>2. 两次工业革命</strong><br>
+第一次：蒸汽时代，工厂制度确立，世界市场初步形成。<br>
+第二次：电气时代，垄断组织产生，资本主义世界市场最终形成。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第7课 现代社会生活变迁</div>
+<div class="folder-body">
+<div class="point">
+交通：火车、汽车、飞机、高铁普及。<br>
+通信：电报、电话、互联网发展。<br>
+城市化加速，物质生活、思想观念、社会习俗发生巨大变化。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">选择性必修3 文化交流与传播</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第1课 中华优秀传统文化</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 儒家思想发展</strong><br>
+孔子：仁、礼、德治。<br>
+孟子：仁政、民贵君轻。<br>
+荀子：礼法并重。<br>
+董仲舒：罢黜百家，独尊儒术。<br>
+宋明理学：程朱理学、陆王心学，强化伦理道德。
+</div>
+<div class="point">
+<strong>2. 其他思想流派</strong><br>
+道家：无为而治、顺应自然。<br>
+法家：法治、中央集权。<br>
+墨家：兼爱、非攻、尚贤。
+</div>
+<div class="point">
+<strong>3. 中华文化特点</strong><br>
+以人为本、天人合一、和而不同、家国情怀、重视伦理道德、包容创新。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第2课 古代中外文化交流</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 丝绸之路</strong><br>
+汉代：张骞通西域，丝绸、铁器西传，佛教传入中国。<br>
+唐代：玄奘西行、鉴真东渡，长安成为国际大都会。<br>
+元代：马可·波罗来华，东西方交流鼎盛。
+</div>
+<div class="point">
+<strong>2. 东亚文化圈</strong><br>
+以中国为中心，对朝鲜、日本产生深刻影响，制度、文字、儒学、佛教广泛传播。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第3课 近代西学东渐</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 新思想萌发</strong><br>
+林则徐、魏源：师夷长技以制夷，开眼看世界。
+</div>
+<div class="point">
+<strong>2. 洋务运动</strong><br>
+中体西用，学习西方先进技术。
+</div>
+<div class="point">
+<strong>3. 维新变法</strong><br>
+学习西方君主立宪制度。
+</div>
+<div class="point">
+<strong>4. 辛亥革命</strong><br>
+学习西方民主共和制度。
+</div>
+<div class="point">
+<strong>5. 新文化运动</strong><br>
+前期提倡民主与科学，批判封建礼教；后期传播马克思主义。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第4课 人口迁徙、物种交流</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 人口迁徙</strong><br>
+近代：欧洲殖民者向美洲、大洋洲移民，黑奴贸易，华工出国。<br>
+现代：劳务迁移、难民迁移、智力迁移。
+</div>
+<div class="point">
+<strong>2. 物种交流</strong><br>
+美洲作物：玉米、马铃薯、番茄、花生、烟草传入欧亚。<br>
+欧亚作物：小麦、水稻、家畜传入美洲。<br>
+影响：改变人类饮食结构，促进世界人口增长。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第5课 近代科学技术传播</div>
+<div class="folder-body">
+<div class="point">
+近代科学革命：哥白尼、伽利略、牛顿奠定近代科学体系。<br>
+工业革命技术在全球扩散，改变世界格局。<br>
+中国近代科技落后，现代逐步实现科技自立自强。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第6课 现代文化交流与全球化</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 文化交流途径</strong><br>
+留学教育、影视传媒、旅游、互联网，推动文化交融互鉴。
+</div>
+<div class="point">
+<strong>2. 文明发展态度</strong><br>
+尊重文明多样性，反对文化霸权主义，推动构建人类命运共同体。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer">
+本网站由@石龙子/yiyi独立制作<br>
+仅供学习交流参考，无任何盈利
+</div>
+
+<script>
+// 折叠
+document.querySelectorAll('.folder-title').forEach(t => {
+  t.addEventListener('click', () => {
+    t.classList.toggle('active');
+  });
+});
+
+// 日夜切换
+const themeBtn = document.getElementById('themeBtn');
+themeBtn.addEventListener('click', () => {
+  const isDark = document.documentElement.dataset.theme === 'dark';
+  if (isDark) {
+    document.documentElement.dataset.theme = '';
+    themeBtn.textContent = '夜间模式';
+  } else {
+    document.documentElement.dataset.theme = 'dark';
+    themeBtn.textContent = '日间模式';
+  }
+});
+
+// 搜索高亮
+const search = document.getElementById('search');
+search.addEventListener('input', e => {
+  const val = e.target.value.trim().toLowerCase();
+  const points = document.querySelectorAll('.point');
+  points.forEach(p => {
+    const text = p.textContent.toLowerCase();
+    if (val === '') {
+      p.innerHTML = p.innerHTML.replace(/<\/?span[^>]*>/g, '');
+    } else {
+      if (text.includes(val)) {
+        const reg = new RegExp(val, 'gi');
+        p.innerHTML = p.textContent.replace(reg, m => `<span class="highlight">${m}</span>`);
+      } else {
+        p.innerHTML = p.innerHTML.replace(/<\/?span[^>]*>/g, '');
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>政治知识点</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,"Microsoft YaHei",sans-serif}
+
+  :root{
+    --bg:#fdf6fc;
+    --card:#fff;
+    --text:#222;
+    --sub:#666;
+    --dot:#f8e3f1;
+    --main:#d45a7f;
+    --line:#f0e5ee;
+  }
+  [data-theme="dark"]{
+    --bg:#1a161d;
+    --card:#2a2430;
+    --text:#eee;
+    --sub:#aaa;
+    --dot:#332a30;
+    --main:#f18ba9;
+    --line:#443840;
+  }
+
+  body{
+    background:var(--bg);
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size:22px 22px;
+    color:var(--text);
+    padding-bottom:80px;
+  }
+
+  .header{
+    position:sticky;
+    top:0;
+    background:var(--card);
+    padding:14px 16px;
+    border-radius:14px;
+    margin:14px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.06);
+    font-weight:bold;
+    text-align:center;
+    z-index:10;
+  }
+
+  .bar{
+    display:flex;
+    gap:10px;
+    margin-bottom:10px;
+  }
+
+  #search{
+    flex:1;
+    padding:10px 14px;
+    border-radius:10px;
+    border:1px solid var(--dot);
+    background:var(--card);
+    color:var(--text);
+    font-size:15px;
+  }
+
+  #themeBtn{
+    padding:10px 14px;
+    border-radius:10px;
+    border:none;
+    background:var(--main);
+    color:#fff;
+    font-weight:bold;
+    white-space:nowrap;
+  }
+
+  .folder{
+    margin:14px;
+    border-radius:14px;
+    background:var(--card);
+    overflow:hidden;
+    box-shadow:0 2px 6px rgba(0,0,0,0.04);
+  }
+
+  .folder-title{
+    padding:16px;
+    font-weight:bold;
+    cursor:pointer;
+    position:relative;
+  }
+  .folder-title::after{
+    content:"+";
+    position:absolute;
+    right:16px;
+    top:16px;
+  }
+  .folder-title.active::after{content:"−";}
+
+  .folder-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+  .folder-title.active + .folder-body{
+    max-height:20000px;
+  }
+
+  .point{
+    padding:12px 16px;
+    border-top:1px solid var(--line);
+    line-height:1.7;
+    font-size:15px;
+  }
+
+  .point strong{
+    color:var(--main);
+  }
+
+  .footer{
+    text-align:center;
+    font-size:12px;
+    color:var(--sub);
+    margin:40px 0;
+  }
+
+  .highlight{
+    background:#fff580;
+    color:#000;
+    padding:2px 4px;
+    border-radius:4px;
+  }
+  [data-theme="dark"] .highlight{
+    background:#ffdd57;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="bar">
+    <input type="text" id="search" placeholder="搜索知识点…">
+    <button id="themeBtn">夜间模式</button>
+  </div>
+  <div style="margin-top:6px">政治知识点</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">必修1 中国特色社会主义</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第一课 社会主义从空想到科学</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 原始社会</strong><br>
+生产力低下，生产资料公有制，平均分配，无阶级无剥削。
+</div>
+<div class="point">
+<strong>2. 奴隶社会</strong><br>
+生产力提高，私有制产生，阶级对立，奴隶制国家形成。
+</div>
+<div class="point">
+<strong>3. 封建社会</strong><br>
+地主占有土地，农民依附于地主，地租剥削，君主专制统治。
+</div>
+<div class="point">
+<strong>4. 资本主义社会</strong><br>
+根本矛盾：生产社会化与生产资料资本主义私人占有。<br>
+经济危机：根本原因是资本主义基本矛盾，表现为生产相对过剩。
+</div>
+<div class="point">
+<strong>5. 科学社会主义</strong><br>
+思想来源：空想社会主义；历史条件：工人运动兴起；理论基石：唯物史观、剩余价值学说。<br>
+标志：1848《共产党宣言》发表。
+</div>
+<div class="point">
+<strong>6. 十月革命</strong><br>
+1917年，建立世界上第一个社会主义国家，实现科学社会主义从理论到现实。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第二课 新民主主义革命与社会主义建设</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 近代国情</strong><br>
+半殖民地半封建社会，主要矛盾：帝国主义与中华民族、封建主义与人民大众。
+</div>
+<div class="point">
+<strong>2. 新民主主义革命</strong><br>
+开端：五四运动（1919）；领导阶级：无产阶级；指导思想：马克思主义；1949胜利，新中国成立。
+</div>
+<div class="point">
+<strong>3. 社会主义制度确立</strong><br>
+1953—1956三大改造完成，标志社会主义制度在中国建立。
+</div>
+<div class="point">
+<strong>4. 社会主义建设探索</strong><br>
+中共八大正确分析矛盾；虽有失误，但取得独立工业体系基础。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第三课 伟大的改革开放</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 开启标志</strong><br>
+1978十一届三中全会，停止以阶级斗争为纲，以经济建设为中心，实行改革开放。
+</div>
+<div class="point">
+<strong>2. 进程</strong><br>
+农村改革先行（家庭联产承包）→ 沿海开放 → 社会主义市场经济体制确立。
+</div>
+<div class="point">
+<strong>3. 意义</strong><br>
+极大解放发展生产力，提升综合国力与人民生活，是决定当代中国命运的关键一招。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第四课 中国特色社会主义进入新时代</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 新历史方位</strong><br>
+中国特色社会主义进入新时代。
+</div>
+<div class="point">
+<strong>2. 社会主要矛盾</strong><br>
+人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾。
+</div>
+<div class="point">
+<strong>3. 中国梦</strong><br>
+实现中华民族伟大复兴，本质：国家富强、民族振兴、人民幸福。
+</div>
+<div class="point">
+<strong>4. 四个伟大</strong><br>
+伟大斗争、伟大工程、伟大事业、伟大梦想，起决定作用的是党的建设新的伟大工程。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">必修2 经济与社会</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第一课 我国基本经济制度</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 所有制结构</strong><br>
+公有制为主体、多种所有制经济共同发展。<br>
+公有制：国有经济、集体经济、混合所有制中的国有集体成分。<br>
+非公有制：个体、私营、外资，是社会主义市场经济重要组成部分。
+</div>
+<div class="point">
+<strong>2. 两个毫不动摇</strong><br>
+毫不动摇巩固和发展公有制经济，毫不动摇鼓励、支持、引导非公有制经济。
+</div>
+<div class="point">
+<strong>3. 分配制度</strong><br>
+按劳分配为主体、多种分配方式并存。<br>
+按劳分配：公有制经济中劳动为尺度。<br>
+按要素分配：劳动、资本、技术、管理、数据等。
+</div>
+<div class="point">
+<strong>4. 共同富裕</strong><br>
+扩大中等收入群体，增加低收入者收入，调节过高收入，取缔非法收入。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第二课 社会主义市场经济体制</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 市场调节</strong><br>
+机制：价格、供求、竞争。<br>
+优点：优化资源配置；缺陷：自发性、盲目性、滞后性。
+</div>
+<div class="point">
+<strong>2. 政府职能</strong><br>
+实施科学宏观调控，市场监管、社会管理、公共服务、环境保护。
+</div>
+<div class="point">
+<strong>3. 宏观调控目标</strong><br>
+促进经济增长、增加就业、稳定物价、保持国际收支平衡。<br>
+手段：经济（财政、货币）、法律、行政手段。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第三课 经济高质量发展</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 新发展理念</strong><br>
+创新、协调、绿色、开放、共享。
+</div>
+<div class="point">
+<strong>2. 现代化经济体系</strong><br>
+产业体系、市场体系、收入分配体系、城乡区域发展体系、绿色发展体系、全面开放体系。
+</div>
+<div class="point">
+<strong>3. 乡村振兴与区域协调</strong><br>
+解决三农问题，推动区域协调发展。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">必修3 政治与法治</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第一课 中国共产党的领导</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 性质与宗旨</strong><br>
+中国工人阶级先锋队，中国人民和中华民族先锋队；宗旨：全心全意为人民服务。
+</div>
+<div class="point">
+<strong>2. 执政理念</strong><br>
+立党为公、执政为民。
+</div>
+<div class="point">
+<strong>3. 指导思想</strong><br>
+马克思列宁主义、毛泽东思想、邓小平理论、“三个代表”重要思想、科学发展观、习近平新时代中国特色社会主义思想。
+</div>
+<div class="point">
+<strong>4. 领导方式</strong><br>
+政治领导、思想领导、组织领导。
+</div>
+<div class="point">
+<strong>5. 全面从严治党</strong><br>
+自我革命，保持先进性纯洁性，提高执政能力。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第二课 人民当家作主</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 国体</strong><br>
+人民民主专政的社会主义国家，本质：人民当家作主。
+</div>
+<div class="point">
+<strong>2. 根本政治制度</strong><br>
+人民代表大会制度：人民选举代表，统一行使国家权力。
+</div>
+<div class="point">
+<strong>3. 基本政治制度</strong><br>
+中国共产党领导的多党合作和政治协商制度；民族区域自治制度；基层群众自治制度。
+</div>
+<div class="point">
+<strong>4. 全过程人民民主</strong><br>
+最广泛、最真实、最管用的民主。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第三课 法治国家、法治政府、法治社会</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 依法治国总目标</strong><br>
+建设中国特色社会主义法治体系，建设社会主义法治国家。
+</div>
+<div class="point">
+<strong>2. 法治国家</strong><br>
+宪法法律至上，良法善治，权利保障，权力受制约。
+</div>
+<div class="point">
+<strong>3. 法治政府</strong><br>
+职能科学、权责法定、执法严明、公开公正、廉洁高效、守法诚信。
+</div>
+<div class="point">
+<strong>4. 法治社会</strong><br>
+全社会尊法学法守法用法，健全社会矛盾纠纷预防化解机制。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第四课 全面依法治国</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 十六字方针</strong><br>
+科学立法、严格执法、公正司法、全民守法。
+</div>
+<div class="point">
+<strong>2. 立法</strong><br>
+尊重规律，民主立法，依法立法。
+</div>
+<div class="point">
+<strong>3. 执法</strong><br>
+规范公正文明执法，全面履行政府职能。
+</div>
+<div class="point">
+<strong>4. 司法</strong><br>
+以事实为依据、以法律为准绳，司法公正，独立行使职权。
+</div>
+<div class="point">
+<strong>5. 守法</strong><br>
+增强全民法治观念，建设法治文化。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">必修4 哲学与文化</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第一单元 哲学基本原理</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 哲学基本问题</strong><br>
+思维与存在的关系问题：何者第一性；有无同一性。
+</div>
+<div class="point">
+<strong>2. 唯物论</strong><br>
+物质决定意识，意识对物质具有能动作用；一切从实际出发，实事求是。<br>
+规律是客观普遍的，要尊重规律，利用规律。
+</div>
+<div class="point">
+<strong>3. 辩证法</strong><br>
+联系观：普遍、客观、多样，整体与部分。<br>
+发展观：发展普遍性，前进性与曲折性，量变与质变。<br>
+矛盾观：对立统一，普遍性特殊性，主次矛盾，矛盾主次方面，两点论与重点论统一。
+</div>
+<div class="point">
+<strong>4. 认识论</strong><br>
+实践决定认识：来源、动力、标准、目的。<br>
+真理是客观具体有条件的，认识具有反复性无限性上升性。
+</div>
+<div class="point">
+<strong>5. 唯物史观</strong><br>
+社会存在决定社会意识；生产力决定生产关系，经济基础决定上层建筑；人民群众是历史创造者。
+</div>
+<div class="point">
+<strong>6. 价值观</strong><br>
+价值观具有导向作用，自觉站在最广大人民立场上，实现人生价值（劳动奉献、个人社会统一、砥砺自我）。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第二单元 文化传承与创新</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 文化特点</strong><br>
+多样性、民族性、时代性、继承性。
+</div>
+<div class="point">
+<strong>2. 传统文化</strong><br>
+相对稳定性，鲜明民族性；取其精华、去其糟粕，批判继承、古为今用。
+</div>
+<div class="point">
+<strong>3. 文化交流</strong><br>
+尊重文化多样性，求同存异、兼收并蓄，推动文明互鉴。
+</div>
+<div class="point">
+<strong>4. 文化创新</strong><br>
+立足实践，继承传统、推陈出新，面向世界、博采众长，以人民为中心。
+</div>
+<div class="point">
+<strong>5. 中国特色社会主义文化</strong><br>
+以马克思主义为指导，坚守中华文化立场，建设文化强国，弘扬民族精神与时代精神。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">选择性必修1 当代国际政治与经济</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">国家与国际组织</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 国家本质</strong><br>
+阶级统治工具，国家性质由统治阶级性质决定。
+</div>
+<div class="point">
+<strong>2. 政体</strong><br>
+人民代表大会制度（中国）；总统制、议会制、君主立宪制（西方）。
+</div>
+<div class="point">
+<strong>3. 国家结构形式</strong><br>
+单一制（中国）、联邦制。
+</div>
+<div class="point">
+<strong>4. 联合国</strong><br>
+宗旨：维护国际和平安全，促进国际合作发展。<br>
+安理会：唯一有权采取维和行动，五大常任理事国否决权。
+</div>
+<div class="point">
+<strong>5. 世界多极化</strong><br>
+多极化趋势不可逆转，和平与发展是时代主题，国际关系基本形式：竞争、合作、冲突。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">中国外交与国际贡献</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 外交政策</strong><br>
+独立自主和平外交政策；宗旨：维护世界和平、促进共同发展；基本目标：维护主权安全发展利益，促进世界和平发展；基本准则：和平共处五项原则。
+</div>
+<div class="point">
+<strong>2. 人类命运共同体</strong><br>
+持久和平、普遍安全、共同繁荣、开放包容、清洁美丽。
+</div>
+<div class="point">
+<strong>3. 全球治理</strong><br>
+共商共建共享，推动国际秩序朝公正合理方向发展。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">经济全球化</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 表现</strong><br>
+生产全球化、贸易全球化、金融全球化。
+</div>
+<div class="point">
+<strong>2. 影响</strong><br>
+机遇：资源配置、技术进步、经济发展；挑战：风险跨国传递，发展不平衡。
+</div>
+<div class="point">
+<strong>3. 中国态度</strong><br>
+推动经济全球化朝着更加开放、包容、普惠、平衡、共赢方向发展。
+</div>
+<div class="point">
+<strong>4. 对外开放格局</strong><br>
+陆海内外联动、东西双向互济，高水平对外开放。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">选择性必修2 法律与生活</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">民事权利与义务</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 民法基本原则</strong><br>
+平等、自愿、公平、诚信、守法与公序良俗、绿色。
+</div>
+<div class="point">
+<strong>2. 人身权</strong><br>
+生命权、身体权、健康权、姓名权、肖像权、名誉权、荣誉权、隐私权。
+</div>
+<div class="point">
+<strong>3. 财产权</strong><br>
+物权（所有权、用益物权、担保物权）、知识产权（著作权、专利权、商标权）。
+</div>
+<div class="point">
+<strong>4. 合同</strong><br>
+订立、履行、违约与责任，鼓励守信，维护交易秩序。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">婚姻家庭与劳动就业</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 婚姻家庭</strong><br>
+结婚条件、夫妻权利义务、父母子女关系、继承（法定继承、遗嘱继承）。
+</div>
+<div class="point">
+<strong>2. 劳动法</strong><br>
+劳动者权利：就业、取得报酬、休息休假、社保、劳动保护等。<br>
+劳动合同、劳动争议解决：协商、调解、仲裁、诉讼。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">社会争议解决</div>
+<div class="folder-body">
+<div class="point">
+方式：和解、调解、仲裁、诉讼（民事诉讼、行政诉讼、刑事诉讼）。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">选择性必修3 逻辑与思维</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">科学思维与逻辑</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 科学思维</strong><br>
+追求认识客观性，结果可检验，具有预见性、创新性。
+</div>
+<div class="point">
+<strong>2. 形式逻辑</strong><br>
+同一律、矛盾律、排中律。
+</div>
+<div class="point">
+<strong>3. 概念·判断·推理</strong><br>
+演绎推理、归纳推理、类比推理。
+</div>
+<div class="point">
+<strong>4. 辩证思维</strong><br>
+联系、发展、全面，分析与综合，质量互变，辩证否定。
+</div>
+<div class="point">
+<strong>5. 创新思维</strong><br>
+联想、发散、聚合、逆向思维，多维度解决问题。
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer">
+本网站由@石龙子/yiyi独立制作<br>
+仅供学习交流参考，无任何盈利
+</div>
+
+<script>
+// 折叠
+document.querySelectorAll('.folder-title').forEach(t => {
+  t.addEventListener('click', () => {
+    t.classList.toggle('active');
+  });
+});
+
+// 日夜切换
+const themeBtn = document.getElementById('themeBtn');
+themeBtn.addEventListener('click', () => {
+  const isDark = document.documentElement.dataset.theme === 'dark';
+  if (isDark) {
+    document.documentElement.dataset.theme = '';
+    themeBtn.textContent = '夜间模式';
+  } else {
+    document.documentElement.dataset.theme = 'dark';
+    themeBtn.textContent = '日间模式';
+  }
+});
+
+// 搜索高亮
+const search = document.getElementById('search');
+search.addEventListener('input', e => {
+  const val = e.target.value.trim().toLowerCase();
+  const points = document.querySelectorAll('.point');
+  points.forEach(p => {
+    const text = p.textContent.toLowerCase();
+    if (val === '') {
+      p.innerHTML = p.innerHTML.replace(/<\/?span[^>]*>/g, '');
+    } else {
+      if (text.includes(val)) {
+        const reg = new RegExp(val, 'gi');
+        p.innerHTML = p.textContent.replace(reg, m => `<span class="highlight">${m}</span>`);
+      } else {
+        p.innerHTML = p.innerHTML.replace(/<\/?span[^>]*>/g, '');
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文科考试必背(｡･ω･｡)</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif}
+
+  :root{
+    --bg:#fdf6fc;
+    --card:#fff;
+    --text:#222;
+    --sub:#666;
+    --dot:#f8e3f1;
+    --main:#d45a7f;
+  }
+  [data-theme="dark"]{
+    --bg:#1a161d;
+    --card:#2a2430;
+    --text:#eee;
+    --sub:#aaa;
+    --dot:#332a30;
+    --main:#f18ba9;
+  }
+
+  body{
+    background:var(--bg);
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size:22px 22px;
+    color:var(--text);
+    min-height:100vh;
+    padding:20px;
+    padding-bottom:60px;
+  }
+
+  .header{
+    position:sticky;
+    top:0;
+    background:var(--card);
+    padding:14px 16px;
+    border-radius:14px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom:24px;
+    z-index:10;
+  }
+
+  .bar{
+    display:flex;
+    gap:10px;
+    margin-bottom:10px;
+  }
+
+  #search{
+    flex:1;
+    padding:10px 14px;
+    border-radius:10px;
+    border:1px solid var(--dot);
+    background:var(--card);
+    color:var(--text);
+    font-size:15px;
+  }
+
+  #themeBtn{
+    padding:10px 14px;
+    border-radius:10px;
+    border:none;
+    background:var(--main);
+    color:#fff;
+    font-weight:bold;
+    white-space:nowrap;
+  }
+
+  .title{
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    margin:6px 0;
+  }
+
+  .subjects{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    max-width:400px;
+    margin:0 auto;
+  }
+
+  .item{
+    display:block;
+    background:var(--card);
+    border-radius:14px;
+    padding:20px;
+    text-align:center;
+    font-size:17px;
+    font-weight:bold;
+    color:var(--text);
+    text-decoration:none;
+    box-shadow:0 2px 6px rgba(0,0,0,0.04);
+    transition:0.2s;
+  }
+  .item:hover{opacity:.9}
+
+  .history{border-left:4px solid #d45a7f}
+  .politic{border-left:4px solid #367fc8}
+  .geo{border-left:4px solid #29a157}
+
+  /* 随机抽背模块 */
+  .quiz-box{
+    background:var(--card);
+    border-radius:14px;
+    padding:20px;
+    margin:30px auto 0;
+    max-width:400px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.04);
+  }
+  .quiz-title{
+    font-weight:bold;
+    font-size:17px;
+    text-align:center;
+    margin-bottom:12px;
+  }
+  .quiz-row{
+    display:flex;
+    gap:8px;
+    margin-bottom:12px;
+  }
+  .subject-select{
+    flex:1;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid var(--dot);
+    background:var(--card);
+    color:var(--text);
+  }
+  #randomBtn{
+    padding:10px 14px;
+    border-radius:10px;
+    border:none;
+    background:var(--main);
+    color:#fff;
+    font-weight:bold;
+  }
+  .result{
+    padding:14px;
+    background:var(--bg);
+    border-radius:10px;
+    min-height:60px;
+    line-height:1.6;
+    font-size:15px;
+    white-space:pre-line;
+    text-align:left;
+  }
+
+  /* 底部署名 */
+  .footer{
+    text-align:center;
+    font-size:12px;
+    color:var(--sub);
+    margin-top:40px;
+    line-height:1.5;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="bar">
+    <input type="text" id="search" placeholder="搜索科目…">
+    <button id="themeBtn">夜间模式</button>
+  </div>
+  <div class="title">文科考试必背(｡･ω･｡)</div>
+</div>
+
+<div class="subjects">
+  <a href="历史知识点.html" class="item history">📜 历史知识点</a>
+  <a href="政治知识点.html" class="item politic">⚖️ 政治知识点</a>
+  <a href="地理知识点.html" class="item geo">🌍 地理知识点</a>
+</div>
+
+<!-- 随机抽背生成器 -->
+<div class="quiz-box">
+  <div class="quiz-title">🎯 随机抽背生成器</div>
+  <div class="quiz-row">
+    <select class="subject-select" id="subject">
+      <option value="history">历史</option>
+      <option value="politic">政治</option>
+      <option value="geo">地理</option>
+    </select>
+    <button id="randomBtn">随机出题</button>
+  </div>
+  <div class="result" id="result">请选择科目，点击随机出题开始抽背</div>
+</div>
+
+<!-- 底部署名 -->
+<div class="footer">
+  本网站由@石龙子/yiyi独立制作<br>
+  仅供学习交流参考，无任何盈利
+</div>
+
+<script>
+// 题库：只出题，不给答案
+const questions = {
+  history: [
+    "鸦片战争爆发的时间是什么？战争对中国的主要影响是什么？",
+    "辛亥革命的历史意义与局限性分别是什么？",
+    "五四运动爆发的导火线是什么？其历史地位是什么？",
+    "中国共产党成立的时间是什么？有何伟大意义？",
+    "抗日战争胜利的原因和历史影响分别有哪些？",
+    "新中国成立的历史意义是什么？",
+    "三大改造完成的时间和历史意义是什么？",
+    "分封制的主要内容和影响是什么？",
+    "科举制的创立有何积极作用？",
+    "商鞅变法的主要措施及其影响是什么？"
+  ],
+  politic: [
+    "我国的国家性质是什么？其本质是什么？",
+    "新时代我国社会的主要矛盾是什么？",
+    "简述我国社会主义基本经济制度的内容。",
+    "如何理解实践与认识的辩证关系？",
+    "新发展理念的内涵是什么？各自侧重解决什么问题？",
+    "我国政府的经济职能有哪些？",
+    "公民参与民主决策的途径和意义是什么？",
+    "依法治国的十六字方针是什么？各自要求是什么？",
+    "我国外交政策的基本内容是什么？",
+    "为什么说人民群众是历史的创造者？"
+  ],
+  geo: [
+    "热力环流的形成原理是什么？",
+    "东亚季风与南亚季风的成因分别是什么？",
+    "洋流分布的一般规律有哪些？",
+    "影响农业区位的主要自然因素有哪些？",
+    "城镇化过程中容易产生哪些问题？",
+    "水循环的主要环节及其地理意义是什么？",
+    "山地垂直自然带的分布受哪些因素影响？",
+    "工业区位选择的主要社会经济因素有哪些？",
+    "简述可持续发展的基本内涵。",
+    "影响人口迁移的主要因素是什么？"
+  ]
+};
+
+// 日夜切换
+const btn = document.getElementById('themeBtn');
+btn.addEventListener('click', () => {
+  const isDark = document.documentElement.dataset.theme === 'dark';
+  if (isDark) {
+    document.documentElement.dataset.theme = '';
+    btn.textContent = '夜间模式';
+  } else {
+    document.documentElement.dataset.theme = 'dark';
+    btn.textContent = '日间模式';
+  }
+});
+
+// 搜索
+const search = document.getElementById('search');
+search.addEventListener('input', e => {
+  const val = e.target.value.toLowerCase();
+  document.querySelectorAll('.item').forEach(i => {
+    const txt = i.textContent.toLowerCase();
+    i.style.display = txt.includes(val) ? 'block' : 'none';
+  });
+});
+
+// 随机出题
+document.getElementById('randomBtn').addEventListener('click', () => {
+  const sub = document.getElementById('subject').value;
+  const list = questions[sub];
+  const q = list[Math.floor(Math.random() * list.length)];
+  document.getElementById('result').textContent = q;
 });
 </script>
 
