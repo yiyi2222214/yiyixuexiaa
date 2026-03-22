@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地理知识点</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,"Microsoft YaHei",sans-serif}
+
+:root {
+  --bg: #fdf6fc;
+  --card: #fff;
+  --text: #222;
+  --sub: #666;
+  --dot: #f8e3f1;
+  --main: #d45a7f;
+  --line: #f0e5ee;
+}
+[data-theme="dark"] {
+  --bg: #1a161d;
+  --card: #2a2430;
+  --text: #eee;
+  --sub: #aaa;
+  --dot: #332a30;
+  --main: #f18ba9;
+  --line: #443840;
+}
+
+body {
+  background: var(--bg);
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--text);
+  padding-bottom: 80px;
+}
+
+.header {
+  position:sticky;
+  top:0;
+  background:var(--card);
+  padding:14px 16px;
+  border-radius:14px;
+  margin:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  font-weight:bold;
+  text-align:center;
+  z-index:10;
+}
+
+.bar {
+  display:flex;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+#search {
+  flex:1;
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid var(--dot);
+  background:var(--card);
+  color:var(--text);
+  font-size:15px;
+}
+
+#themeBtn {
+  padding:10px 14px;
+  border-radius:10px;
+  border:none;
+  background:var(--main);
+  color:#fff;
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+.folder {
+  margin: 14px;
+  border-radius: 14px;
+  background: var(--card);
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+.folder-title {
+  padding: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+}
+.folder-title::after {
+  content: "+";
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+.folder-title.active::after {
+  content: "−";
+}
+.folder-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.folder-title.active + .folder-body {
+  max-height: 10000px;
+}
+
+.point {
+  padding: 12px 16px;
+  border-top: 1px solid var(--line);
+  line-height: 1.7;
+  font-size: 15px;
+}
+.point strong {
+  color: var(--main);
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--sub);
+  margin: 40px 0;
+}
+
+.highlight {
+  background: #fff580;
+  color: #000;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+[data-theme="dark"] .highlight {
+  background: #ffdd57;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="bar">
+    <input type="text" id="search" placeholder="搜索知识点…">
+    <button id="themeBtn">夜间模式</button>
+  </div>
+  <div style="margin-top:6px">地理知识点</div>
+</div>
+
+<div class="folder">
+  <div class="folder-title">第一章 宇宙中的地球</div>
+  <div class="folder-body">
+    <div class="folder">
+      <div class="folder-title">第一节 地球的宇宙环境</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 天体与天体系统</strong><br>
+          • 天体：宇宙中物质的存在形式，如恒星、星云、行星、卫星、彗星、流星体等。<br>
+          • 星云：由气体和尘埃组成，呈云雾状，是恒星诞生的场所。<br>
+          • 恒星：由炽热气体组成，能自己发光，太阳是离地球最近的恒星。<br>
+          • 天体系统层次：总星系→银河系→太阳系→地月系。<br>
+          • 银河系直径约10万光年，太阳系位于银河系一条旋臂上。
+        </div>
+        <div class="point">
+          <strong>2. 太阳系</strong><br>
+          • 中心天体：太阳（占太阳系总质量99.86%）。<br>
+          • 八大行星：水星、金星、地球、火星、木星、土星、天王星、海王星。<br>
+          • 运动特征：同向性、共面性、近圆性。<br>
+          • 类地行星：水、金、地、火；巨行星：木、土；远日行星：天王、海王。
+        </div>
+        <div class="point">
+          <strong>3. 地球存在生命的条件</strong><br>
+          <strong>外部条件：</strong><br>
+          • 稳定的太阳光照；安全的宇宙环境，大小行星各行其道。<br>
+          <strong>自身条件：</strong><br>
+          • 日地距离适中→适宜的温度。<br>
+          • 地球质量体积适中→适宜生物呼吸的大气。<br>
+          • 地球内部运动→液态水的形成。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第二节 太阳对地球的影响</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 太阳辐射</strong><br>
+          • 能量来源：太阳内部核聚变。<br>
+          • 对地球影响：提供光热资源；维持地表温度；推动水、大气运动和生命活动；为人类提供煤、石油等能源。
+        </div>
+        <div class="point">
+          <strong>2. 太阳活动</strong><br>
+          • 光球层：黑子（太阳活动强弱标志）。<br>
+          • 色球层：耀斑、日珥（最剧烈）。<br>
+          • 日冕层：太阳风。<br>
+          • 周期约11年。<br>
+          • 影响：干扰无线电短波通信；产生磁暴；高纬极光；影响气候与自然灾害。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第三节 地球的圈层结构</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 内部圈层</strong><br>
+          • 划分依据：地震波传播速度变化。<br>
+          • 莫霍界面：地下约33km，横波纵波速度加快。<br>
+          • 古登堡界面：地下约2900km，横波消失，纵波骤减。<br>
+          • 地壳：厚度不均，大陆厚海洋薄。<br>
+          • 地幔：上地幔上部有软流层，是岩浆发源地。<br>
+          • 地核：外核液态，内核固态，由铁镍组成。
+        </div>
+        <div class="point">
+          <strong>2. 外部圈层</strong><br>
+          • 大气圈：包围地球的气体层。<br>
+          • 水圈：连续但不规则。<br>
+          • 生物圈：占有大气圈底部、水圈全部、岩石圈上部，最活跃圈层。<br>
+          • 三大圈层相互联系、相互渗透。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="folder">
+  <div class="folder-title">第二章 岩石圈与地表形态</div>
+  <div class="folder-body">
+    <div class="folder">
+      <div class="folder-title">第一节 岩石圈的组成与物质循环</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 三大类岩石</strong><br>
+          <strong>岩浆岩：</strong><br>
+          • 侵入岩：岩浆缓慢冷却，如花岗岩。<br>
+          • 喷出岩：岩浆快速冷却，如玄武岩、流纹岩、安山岩。<br>
+          <strong>沉积岩：</strong><br>
+          • 特点：层理构造、含有化石。<br>
+          • 常见：石灰岩、砂岩、页岩。<br>
+          <strong>变质岩：</strong><br>
+          • 石灰岩→大理岩；页岩→板岩；砂岩→石英岩；花岗岩→片麻岩。
+        </div>
+        <div class="point">
+          <strong>2. 岩石圈物质循环</strong><br>
+          • 岩浆→冷却凝固→岩浆岩。<br>
+          • 各类岩石→外力作用（风化、侵蚀、搬运、沉积、固结成岩）→沉积岩。<br>
+          • 各类岩石→变质作用→变质岩。<br>
+          • 各类岩石→重熔再生→岩浆。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第二节 内力作用与地表形态</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 内力作用</strong><br>
+          • 能量来源：地球内部放射性元素衰变。<br>
+          • 表现：地壳运动、岩浆活动、变质作用、地震。<br>
+          • 总趋势：使地表高低起伏。
+        </div>
+        <div class="point">
+          <strong>2. 板块构造学说</strong><br>
+          • 六大板块：亚欧、非洲、印度洋、太平洋、美洲、南极洲板块。<br>
+          • 生长边界：张裂→海岭、裂谷。<br>
+          • 消亡边界：碰撞→山脉、海沟、岛弧。
+        </div>
+        <div class="point">
+          <strong>3. 地质构造</strong><br>
+          <strong>褶皱：</strong><br>
+          • 背斜：岩层向上拱，中心老两翼新，常成山，易被侵蚀成谷。<br>
+          • 向斜：岩层向下弯，中心新两翼老，常成谷，易成山。<br>
+          <strong>断层：</strong><br>
+          • 地垒：断块上升→华山、庐山、泰山。<br>
+          • 地堑：断块下降→渭河平原、汾河谷地、东非大裂谷。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第三节 外力作用与地表形态</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 外力作用</strong><br>
+          • 能量来源：太阳辐射能。<br>
+          • 表现：风化、侵蚀、搬运、沉积、固结成岩。<br>
+          • 总趋势：削高填低，使地表趋于平坦。
+        </div>
+        <div class="point">
+          <strong>2. 流水作用</strong><br>
+          • 侵蚀：峡谷、瀑布、喀斯特地貌（溶洞、石林）。<br>
+          • 沉积：冲积扇、冲积平原、三角洲。
+        </div>
+        <div class="point">
+          <strong>3. 风力作用</strong><br>
+          • 侵蚀：风蚀蘑菇、风蚀柱、雅丹地貌。<br>
+          • 沉积：沙丘、黄土高原。
+        </div>
+        <div class="point">
+          <strong>4. 海浪与冰川作用</strong><br>
+          • 海浪：海蚀崖、海蚀柱、沙滩。<br>
+          • 冰川：U型谷、角峰、冰斗、峡湾。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="folder">
+  <div class="folder-title">第三章 大气运动</div>
+  <div class="folder-body">
+    <div class="folder">
+      <div class="folder-title">第一节 大气受热过程</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 太阳辐射</strong><br>
+          • 太阳辐射为短波辐射，大部分到达地面。<br>
+          • 地面吸收后以地面长波辐射形式加热大气。<br>
+          • 大气直接热源是地面，而非太阳。
+        </div>
+        <div class="point">
+          <strong>2. 保温作用</strong><br>
+          • 大气吸收地面辐射→大气逆辐射→补偿地面热量损失。<br>
+          • 阴天温差小，晴天温差大；夜晚多云保温强。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第二节 热力环流与风</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 热力环流</strong><br>
+          • 根本原因：地面冷热不均。<br>
+          • 过程：热→上升→低压；冷→下沉→高压。<br>
+          • 实例：海陆风、山谷风、城市热岛环流。
+        </div>
+        <div class="point">
+          <strong>2. 大气水平运动——风</strong><br>
+          • 直接动力：水平气压梯度力（垂直等压线，高压→低压）。<br>
+          • 地转偏向力：北半球右偏，南半球左偏，只改向不改变风速。<br>
+          • 摩擦力：减小风速。<br>
+          • 近地面风：斜穿等压线；高空风：平行于等压线。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第三节 气压带和风带</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 三圈环流</strong><br>
+          • 七个气压带：赤道低压、副热带高压（2个）、副极地低压（2个）、极地高压（2个）。<br>
+          • 六个风带：信风带（2）、西风带（2）、极地东风带（2）。
+        </div>
+        <div class="point">
+          <strong>2. 季节移动</strong><br>
+          • 随太阳直射点移动。<br>
+          • 北半球夏季北移，冬季南移。
+        </div>
+        <div class="point">
+          <strong>3. 海陆分布对气压带的影响</strong><br>
+          • 北半球：海陆热力差异大→气压带断裂成块状。<br>
+          • 夏季：亚欧大陆形成亚洲低压，海洋高压。<br>
+          • 冬季：亚欧大陆形成亚洲高压，海洋低压。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第四节 季风环流</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 东亚季风</strong><br>
+          • 成因：海陆热力性质差异。<br>
+          • 夏季：东南风，温暖湿润。<br>
+          • 冬季：西北风，寒冷干燥。
+        </div>
+        <div class="point">
+          <strong>2. 南亚季风</strong><br>
+          • 成因：海陆热力差异 + 气压带风带季节移动。<br>
+          • 夏季：西南风，高温多雨。<br>
+          • 冬季：东北风，温和干燥。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第五节 常见天气系统</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 锋面系统</strong><br>
+          <strong>冷锋：</strong>冷气团主动→降温、大风、雨雪，雨区在锋后。<br>
+          <strong>暖锋：</strong>暖气团主动→连续性降水，雨区在锋前。<br>
+          <strong>准静止锋：</strong>冷暖气团势均力敌→梅雨（江淮）、昆明准静止锋。
+        </div>
+        <div class="point">
+          <strong>2. 气旋与反气旋</strong><br>
+          <strong>气旋（低压）：</strong>上升气流→阴雨，北半球逆时针辐合。<br>
+          <strong>反气旋（高压）：</strong>下沉气流→晴朗，北半球顺时针辐散。<br>
+          • 台风：热带气旋。<br>
+          • 伏旱、寒潮：反气旋。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="folder">
+  <div class="folder-title">第四章 水循环与洋流</div>
+  <div class="folder-body">
+    <div class="folder">
+      <div class="folder-title">第一节 水循环</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 水循环类型</strong><br>
+          • 海陆间循环（大循环）：最重要，使陆地水更新。<br>
+          • 陆地内循环：补给少。<br>
+          • 海上内循环：水量最大。
+        </div>
+        <div class="point">
+          <strong>2. 主要环节</strong><br>
+          蒸发、降水、水汽输送、地表径流、地下径流、下渗、植物蒸腾。
+        </div>
+        <div class="point">
+          <strong>3. 地理意义</strong><br>
+          • 维持全球水量平衡。<br>
+          • 更新陆地淡水资源。<br>
+          • 调节热量平衡。<br>
+          • 塑造地表形态。
+        </div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">第二节 洋流</div>
+      <div class="folder-body">
+        <div class="point">
+          <strong>1. 洋流分类</strong><br>
+          • 按性质：暖流（低纬→高纬）、寒流（高纬→低纬）。<br>
+          • 按成因：风海流、密度流、补偿流。
+        </div>
+        <div class="point">
+          <strong>2. 分布规律</strong><br>
+          • 中低纬度：北顺南逆，西暖东寒。<br>
+          • 北半球中高纬：逆时针，西寒东暖。<br>
+          • 南半球西风漂流：寒流。<br>
+          • 北印度洋：冬逆夏顺。
+        </div>
+        <div class="point">
+          <strong>3. 洋流影响</strong><br>
+          • 气候：暖流增温增湿，寒流降温减湿。<br>
+          • 渔场：寒暖流交汇→北海道、纽芬兰、北海渔场；上升流→秘鲁渔场。<br>
+          • 航运：顺流加速，逆流减速；海雾影响航行。<br>
+          • 污染：加快净化，扩大范围。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="folder">
+  <div class="folder-title">第五章 自然环境的整体性与差异性</div>
+  <div class="folder-body">
+    <div class="point">
+      <strong>1. 整体性</strong><br>
+      • 要素：地形、气候、水文、生物、土壤相互联系、相互影响。<br>
+      • “牵一发而动全身”，某一要素变化会导致整体改变。
+    </div>
+    <div class="point">
+      <strong>2. 差异性——地域分异规律</strong><br>
+      • 纬度地带分异：热量为基础，南北更替。<br>
+      • 干湿度地带分异：水分为基础，东西更替。<br>
+      • 垂直分异：海拔升高，水热变化，自然带垂直更替。
+    </div>
+    <div class="point">
+      <strong>3. 非地带性现象</strong><br>
+      受地形、洋流、水源影响，如沙漠中的绿洲、安第斯山南段东西差异。
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+该网站由@石龙子/yiyi独立制作，仅供学习交流
+</div>
+
+<script>
+// 折叠
+document.querySelectorAll('.folder-title').forEach(t => {
+  t.addEventListener('click', () => {
+    t.classList.toggle('active');
+  });
+});
+
+// 夜间模式
+const themeBtn = document.getElementById('themeBtn');
+themeBtn.addEventListener('click', () => {
+  const isDark = document.documentElement.dataset.theme === 'dark';
+  if (isDark) {
+    document.documentElement.dataset.theme = '';
+    themeBtn.textContent = '夜间模式';
+  } else {
+    document.documentElement.dataset.theme = 'dark';
+    themeBtn.textContent = '日间模式';
+  }
+});
+
+// 搜索高亮
+const search = document.getElementById('search');
+search.addEventListener('input', e => {
+  const val = e.target.value.trim().toLowerCase();
+  const points = document.querySelectorAll('.point');
+  points.forEach(p => {
+    const text = p.textContent.toLowerCase();
+    if (val === '') {
+      p.innerHTML = p.innerHTML.replace(/<\/?span[^>]*>/g, '');
+    } else {
+      if (text.includes(val)) {
+        const reg = new RegExp(val, 'gi');
+        p.innerHTML = p.textContent.replace(reg, m => `<span class="highlight">${m}</span>`);
+      } else {
+        p.innerHTML = p.innerHTML.replace(/<\/?span[^>]*>/g, '');
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>

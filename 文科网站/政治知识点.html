@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>政治知识点</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,"Microsoft YaHei",sans-serif}
+
+  :root{
+    --bg:#fdf6fc;
+    --card:#fff;
+    --text:#222;
+    --sub:#666;
+    --dot:#f8e3f1;
+    --main:#d45a7f;
+    --line:#f0e5ee;
+  }
+  [data-theme="dark"]{
+    --bg:#1a161d;
+    --card:#2a2430;
+    --text:#eee;
+    --sub:#aaa;
+    --dot:#332a30;
+    --main:#f18ba9;
+    --line:#443840;
+  }
+
+  body{
+    background:var(--bg);
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size:22px 22px;
+    color:var(--text);
+    padding-bottom:80px;
+  }
+
+  .header{
+    position:sticky;
+    top:0;
+    background:var(--card);
+    padding:14px 16px;
+    border-radius:14px;
+    margin:14px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.06);
+    font-weight:bold;
+    text-align:center;
+    z-index:10;
+  }
+
+  .bar{
+    display:flex;
+    gap:10px;
+    margin-bottom:10px;
+  }
+
+  #search{
+    flex:1;
+    padding:10px 14px;
+    border-radius:10px;
+    border:1px solid var(--dot);
+    background:var(--card);
+    color:var(--text);
+    font-size:15px;
+  }
+
+  #themeBtn{
+    padding:10px 14px;
+    border-radius:10px;
+    border:none;
+    background:var(--main);
+    color:#fff;
+    font-weight:bold;
+    white-space:nowrap;
+  }
+
+  .folder{
+    margin:14px;
+    border-radius:14px;
+    background:var(--card);
+    overflow:hidden;
+    box-shadow:0 2px 6px rgba(0,0,0,0.04);
+  }
+
+  .folder-title{
+    padding:16px;
+    font-weight:bold;
+    cursor:pointer;
+    position:relative;
+  }
+  .folder-title::after{
+    content:"+";
+    position:absolute;
+    right:16px;
+    top:16px;
+  }
+  .folder-title.active::after{content:"−";}
+
+  .folder-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+  .folder-title.active + .folder-body{
+    max-height:20000px;
+  }
+
+  .point{
+    padding:12px 16px;
+    border-top:1px solid var(--line);
+    line-height:1.7;
+    font-size:15px;
+  }
+
+  .point strong{
+    color:var(--main);
+  }
+
+  .footer{
+    text-align:center;
+    font-size:12px;
+    color:var(--sub);
+    margin:40px 0;
+  }
+
+  .highlight{
+    background:#fff580;
+    color:#000;
+    padding:2px 4px;
+    border-radius:4px;
+  }
+  [data-theme="dark"] .highlight{
+    background:#ffdd57;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="bar">
+    <input type="text" id="search" placeholder="搜索知识点…">
+    <button id="themeBtn">夜间模式</button>
+  </div>
+  <div style="margin-top:6px">政治知识点</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">必修1 中国特色社会主义</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第一课 社会主义从空想到科学</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 原始社会</strong><br>
+生产力低下，生产资料公有制，平均分配，无阶级无剥削。
+</div>
+<div class="point">
+<strong>2. 奴隶社会</strong><br>
+生产力提高，私有制产生，阶级对立，奴隶制国家形成。
+</div>
+<div class="point">
+<strong>3. 封建社会</strong><br>
+地主占有土地，农民依附于地主，地租剥削，君主专制统治。
+</div>
+<div class="point">
+<strong>4. 资本主义社会</strong><br>
+根本矛盾：生产社会化与生产资料资本主义私人占有。<br>
+经济危机：根本原因是资本主义基本矛盾，表现为生产相对过剩。
+</div>
+<div class="point">
+<strong>5. 科学社会主义</strong><br>
+思想来源：空想社会主义；历史条件：工人运动兴起；理论基石：唯物史观、剩余价值学说。<br>
+标志：1848《共产党宣言》发表。
+</div>
+<div class="point">
+<strong>6. 十月革命</strong><br>
+1917年，建立世界上第一个社会主义国家，实现科学社会主义从理论到现实。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第二课 新民主主义革命与社会主义建设</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 近代国情</strong><br>
+半殖民地半封建社会，主要矛盾：帝国主义与中华民族、封建主义与人民大众。
+</div>
+<div class="point">
+<strong>2. 新民主主义革命</strong><br>
+开端：五四运动（1919）；领导阶级：无产阶级；指导思想：马克思主义；1949胜利，新中国成立。
+</div>
+<div class="point">
+<strong>3. 社会主义制度确立</strong><br>
+1953—1956三大改造完成，标志社会主义制度在中国建立。
+</div>
+<div class="point">
+<strong>4. 社会主义建设探索</strong><br>
+中共八大正确分析矛盾；虽有失误，但取得独立工业体系基础。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第三课 伟大的改革开放</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 开启标志</strong><br>
+1978十一届三中全会，停止以阶级斗争为纲，以经济建设为中心，实行改革开放。
+</div>
+<div class="point">
+<strong>2. 进程</strong><br>
+农村改革先行（家庭联产承包）→ 沿海开放 → 社会主义市场经济体制确立。
+</div>
+<div class="point">
+<strong>3. 意义</strong><br>
+极大解放发展生产力，提升综合国力与人民生活，是决定当代中国命运的关键一招。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第四课 中国特色社会主义进入新时代</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 新历史方位</strong><br>
+中国特色社会主义进入新时代。
+</div>
+<div class="point">
+<strong>2. 社会主要矛盾</strong><br>
+人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾。
+</div>
+<div class="point">
+<strong>3. 中国梦</strong><br>
+实现中华民族伟大复兴，本质：国家富强、民族振兴、人民幸福。
+</div>
+<div class="point">
+<strong>4. 四个伟大</strong><br>
+伟大斗争、伟大工程、伟大事业、伟大梦想，起决定作用的是党的建设新的伟大工程。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">必修2 经济与社会</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第一课 我国基本经济制度</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 所有制结构</strong><br>
+公有制为主体、多种所有制经济共同发展。<br>
+公有制：国有经济、集体经济、混合所有制中的国有集体成分。<br>
+非公有制：个体、私营、外资，是社会主义市场经济重要组成部分。
+</div>
+<div class="point">
+<strong>2. 两个毫不动摇</strong><br>
+毫不动摇巩固和发展公有制经济，毫不动摇鼓励、支持、引导非公有制经济。
+</div>
+<div class="point">
+<strong>3. 分配制度</strong><br>
+按劳分配为主体、多种分配方式并存。<br>
+按劳分配：公有制经济中劳动为尺度。<br>
+按要素分配：劳动、资本、技术、管理、数据等。
+</div>
+<div class="point">
+<strong>4. 共同富裕</strong><br>
+扩大中等收入群体，增加低收入者收入，调节过高收入，取缔非法收入。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第二课 社会主义市场经济体制</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 市场调节</strong><br>
+机制：价格、供求、竞争。<br>
+优点：优化资源配置；缺陷：自发性、盲目性、滞后性。
+</div>
+<div class="point">
+<strong>2. 政府职能</strong><br>
+实施科学宏观调控，市场监管、社会管理、公共服务、环境保护。
+</div>
+<div class="point">
+<strong>3. 宏观调控目标</strong><br>
+促进经济增长、增加就业、稳定物价、保持国际收支平衡。<br>
+手段：经济（财政、货币）、法律、行政手段。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第三课 经济高质量发展</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 新发展理念</strong><br>
+创新、协调、绿色、开放、共享。
+</div>
+<div class="point">
+<strong>2. 现代化经济体系</strong><br>
+产业体系、市场体系、收入分配体系、城乡区域发展体系、绿色发展体系、全面开放体系。
+</div>
+<div class="point">
+<strong>3. 乡村振兴与区域协调</strong><br>
+解决三农问题，推动区域协调发展。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">必修3 政治与法治</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第一课 中国共产党的领导</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 性质与宗旨</strong><br>
+中国工人阶级先锋队，中国人民和中华民族先锋队；宗旨：全心全意为人民服务。
+</div>
+<div class="point">
+<strong>2. 执政理念</strong><br>
+立党为公、执政为民。
+</div>
+<div class="point">
+<strong>3. 指导思想</strong><br>
+马克思列宁主义、毛泽东思想、邓小平理论、“三个代表”重要思想、科学发展观、习近平新时代中国特色社会主义思想。
+</div>
+<div class="point">
+<strong>4. 领导方式</strong><br>
+政治领导、思想领导、组织领导。
+</div>
+<div class="point">
+<strong>5. 全面从严治党</strong><br>
+自我革命，保持先进性纯洁性，提高执政能力。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第二课 人民当家作主</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 国体</strong><br>
+人民民主专政的社会主义国家，本质：人民当家作主。
+</div>
+<div class="point">
+<strong>2. 根本政治制度</strong><br>
+人民代表大会制度：人民选举代表，统一行使国家权力。
+</div>
+<div class="point">
+<strong>3. 基本政治制度</strong><br>
+中国共产党领导的多党合作和政治协商制度；民族区域自治制度；基层群众自治制度。
+</div>
+<div class="point">
+<strong>4. 全过程人民民主</strong><br>
+最广泛、最真实、最管用的民主。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第三课 法治国家、法治政府、法治社会</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 依法治国总目标</strong><br>
+建设中国特色社会主义法治体系，建设社会主义法治国家。
+</div>
+<div class="point">
+<strong>2. 法治国家</strong><br>
+宪法法律至上，良法善治，权利保障，权力受制约。
+</div>
+<div class="point">
+<strong>3. 法治政府</strong><br>
+职能科学、权责法定、执法严明、公开公正、廉洁高效、守法诚信。
+</div>
+<div class="point">
+<strong>4. 法治社会</strong><br>
+全社会尊法学法守法用法，健全社会矛盾纠纷预防化解机制。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第四课 全面依法治国</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 十六字方针</strong><br>
+科学立法、严格执法、公正司法、全民守法。
+</div>
+<div class="point">
+<strong>2. 立法</strong><br>
+尊重规律，民主立法，依法立法。
+</div>
+<div class="point">
+<strong>3. 执法</strong><br>
+规范公正文明执法，全面履行政府职能。
+</div>
+<div class="point">
+<strong>4. 司法</strong><br>
+以事实为依据、以法律为准绳，司法公正，独立行使职权。
+</div>
+<div class="point">
+<strong>5. 守法</strong><br>
+增强全民法治观念，建设法治文化。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">必修4 哲学与文化</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第一单元 哲学基本原理</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 哲学基本问题</strong><br>
+思维与存在的关系问题：何者第一性；有无同一性。
+</div>
+<div class="point">
+<strong>2. 唯物论</strong><br>
+物质决定意识，意识对物质具有能动作用；一切从实际出发，实事求是。<br>
+规律是客观普遍的，要尊重规律，利用规律。
+</div>
+<div class="point">
+<strong>3. 辩证法</strong><br>
+联系观：普遍、客观、多样，整体与部分。<br>
+发展观：发展普遍性，前进性与曲折性，量变与质变。<br>
+矛盾观：对立统一，普遍性特殊性，主次矛盾，矛盾主次方面，两点论与重点论统一。
+</div>
+<div class="point">
+<strong>4. 认识论</strong><br>
+实践决定认识：来源、动力、标准、目的。<br>
+真理是客观具体有条件的，认识具有反复性无限性上升性。
+</div>
+<div class="point">
+<strong>5. 唯物史观</strong><br>
+社会存在决定社会意识；生产力决定生产关系，经济基础决定上层建筑；人民群众是历史创造者。
+</div>
+<div class="point">
+<strong>6. 价值观</strong><br>
+价值观具有导向作用，自觉站在最广大人民立场上，实现人生价值（劳动奉献、个人社会统一、砥砺自我）。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第二单元 文化传承与创新</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 文化特点</strong><br>
+多样性、民族性、时代性、继承性。
+</div>
+<div class="point">
+<strong>2. 传统文化</strong><br>
+相对稳定性，鲜明民族性；取其精华、去其糟粕，批判继承、古为今用。
+</div>
+<div class="point">
+<strong>3. 文化交流</strong><br>
+尊重文化多样性，求同存异、兼收并蓄，推动文明互鉴。
+</div>
+<div class="point">
+<strong>4. 文化创新</strong><br>
+立足实践，继承传统、推陈出新，面向世界、博采众长，以人民为中心。
+</div>
+<div class="point">
+<strong>5. 中国特色社会主义文化</strong><br>
+以马克思主义为指导，坚守中华文化立场，建设文化强国，弘扬民族精神与时代精神。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">选择性必修1 当代国际政治与经济</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">国家与国际组织</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 国家本质</strong><br>
+阶级统治工具，国家性质由统治阶级性质决定。
+</div>
+<div class="point">
+<strong>2. 政体</strong><br>
+人民代表大会制度（中国）；总统制、议会制、君主立宪制（西方）。
+</div>
+<div class="point">
+<strong>3. 国家结构形式</strong><br>
+单一制（中国）、联邦制。
+</div>
+<div class="point">
+<strong>4. 联合国</strong><br>
+宗旨：维护国际和平安全，促进国际合作发展。<br>
+安理会：唯一有权采取维和行动，五大常任理事国否决权。
+</div>
+<div class="point">
+<strong>5. 世界多极化</strong><br>
+多极化趋势不可逆转，和平与发展是时代主题，国际关系基本形式：竞争、合作、冲突。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">中国外交与国际贡献</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 外交政策</strong><br>
+独立自主和平外交政策；宗旨：维护世界和平、促进共同发展；基本目标：维护主权安全发展利益，促进世界和平发展；基本准则：和平共处五项原则。
+</div>
+<div class="point">
+<strong>2. 人类命运共同体</strong><br>
+持久和平、普遍安全、共同繁荣、开放包容、清洁美丽。
+</div>
+<div class="point">
+<strong>3. 全球治理</strong><br>
+共商共建共享，推动国际秩序朝公正合理方向发展。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">经济全球化</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 表现</strong><br>
+生产全球化、贸易全球化、金融全球化。
+</div>
+<div class="point">
+<strong>2. 影响</strong><br>
+机遇：资源配置、技术进步、经济发展；挑战：风险跨国传递，发展不平衡。
+</div>
+<div class="point">
+<strong>3. 中国态度</strong><br>
+推动经济全球化朝着更加开放、包容、普惠、平衡、共赢方向发展。
+</div>
+<div class="point">
+<strong>4. 对外开放格局</strong><br>
+陆海内外联动、东西双向互济，高水平对外开放。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">选择性必修2 法律与生活</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">民事权利与义务</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 民法基本原则</strong><br>
+平等、自愿、公平、诚信、守法与公序良俗、绿色。
+</div>
+<div class="point">
+<strong>2. 人身权</strong><br>
+生命权、身体权、健康权、姓名权、肖像权、名誉权、荣誉权、隐私权。
+</div>
+<div class="point">
+<strong>3. 财产权</strong><br>
+物权（所有权、用益物权、担保物权）、知识产权（著作权、专利权、商标权）。
+</div>
+<div class="point">
+<strong>4. 合同</strong><br>
+订立、履行、违约与责任，鼓励守信，维护交易秩序。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">婚姻家庭与劳动就业</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 婚姻家庭</strong><br>
+结婚条件、夫妻权利义务、父母子女关系、继承（法定继承、遗嘱继承）。
+</div>
+<div class="point">
+<strong>2. 劳动法</strong><br>
+劳动者权利：就业、取得报酬、休息休假、社保、劳动保护等。<br>
+劳动合同、劳动争议解决：协商、调解、仲裁、诉讼。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">社会争议解决</div>
+<div class="folder-body">
+<div class="point">
+方式：和解、调解、仲裁、诉讼（民事诉讼、行政诉讼、刑事诉讼）。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">选择性必修3 逻辑与思维</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">科学思维与逻辑</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 科学思维</strong><br>
+追求认识客观性，结果可检验，具有预见性、创新性。
+</div>
+<div class="point">
+<strong>2. 形式逻辑</strong><br>
+同一律、矛盾律、排中律。
+</div>
+<div class="point">
+<strong>3. 概念·判断·推理</strong><br>
+演绎推理、归纳推理、类比推理。
+</div>
+<div class="point">
+<strong>4. 辩证思维</strong><br>
+联系、发展、全面，分析与综合，质量互变，辩证否定。
+</div>
+<div class="point">
+<strong>5. 创新思维</strong><br>
+联想、发散、聚合、逆向思维，多维度解决问题。
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer">
+本网站由@石龙子/yiyi独立制作<br>
+仅供学习交流参考，无任何盈利
+</div>
+
+<script>
+// 折叠
+document.querySelectorAll('.folder-title').forEach(t => {
+  t.addEventListener('click', () => {
+    t.classList.toggle('active');
+  });
+});
+
+// 日夜切换
+const themeBtn = document.getElementById('themeBtn');
+themeBtn.addEventListener('click', () => {
+  const isDark = document.documentElement.dataset.theme === 'dark';
+  if (isDark) {
+    document.documentElement.dataset.theme = '';
+    themeBtn.textContent = '夜间模式';
+  } else {
+    document.documentElement.dataset.theme = 'dark';
+    themeBtn.textContent = '日间模式';
+  }
+});
+
+// 搜索高亮
+const search = document.getElementById('search');
+search.addEventListener('input', e => {
+  const val = e.target.value.trim().toLowerCase();
+  const points = document.querySelectorAll('.point');
+  points.forEach(p => {
+    const text = p.textContent.toLowerCase();
+    if (val === '') {
+      p.innerHTML = p.innerHTML.replace(/<\/?span[^>]*>/g, '');
+    } else {
+      if (text.includes(val)) {
+        const reg = new RegExp(val, 'gi');
+        p.innerHTML = p.textContent.replace(reg, m => `<span class="highlight">${m}</span>`);
+      } else {
+        p.innerHTML = p.innerHTML.replace(/<\/?span[^>]*>/g, '');
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>

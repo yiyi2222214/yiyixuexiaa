@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>历史知识点</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,"Microsoft YaHei",sans-serif}
+
+  :root{
+    --bg:#fdf6fc;
+    --card:#fff;
+    --text:#222;
+    --sub:#666;
+    --dot:#f8e3f1;
+    --main:#d45a7f;
+    --line:#f0e5ee;
+  }
+  [data-theme="dark"]{
+    --bg:#1a161d;
+    --card:#2a2430;
+    --text:#eee;
+    --sub:#aaa;
+    --dot:#332a30;
+    --main:#f18ba9;
+    --line:#443840;
+  }
+
+  body{
+    background:var(--bg);
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size:22px 22px;
+    color:var(--text);
+    padding-bottom:80px;
+  }
+
+  .header{
+    position:sticky;
+    top:0;
+    background:var(--card);
+    padding:14px 16px;
+    border-radius:14px;
+    margin:14px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.06);
+    font-weight:bold;
+    text-align:center;
+    z-index:10;
+  }
+
+  .bar{
+    display:flex;
+    gap:10px;
+    margin-bottom:10px;
+  }
+
+  #search{
+    flex:1;
+    padding:10px 14px;
+    border-radius:10px;
+    border:1px solid var(--dot);
+    background:var(--card);
+    color:var(--text);
+    font-size:15px;
+  }
+
+  #themeBtn{
+    padding:10px 14px;
+    border-radius:10px;
+    border:none;
+    background:var(--main);
+    color:#fff;
+    font-weight:bold;
+    white-space:nowrap;
+  }
+
+  .folder{
+    margin:14px;
+    border-radius:14px;
+    background:var(--card);
+    overflow:hidden;
+    box-shadow:0 2px 6px rgba(0,0,0,0.04);
+  }
+
+  .folder-title{
+    padding:16px;
+    font-weight:bold;
+    cursor:pointer;
+    position:relative;
+  }
+  .folder-title::after{
+    content:"+";
+    position:absolute;
+    right:16px;
+    top:16px;
+  }
+  .folder-title.active::after{content:"−";}
+
+  .folder-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+  .folder-title.active + .folder-body{
+    max-height:20000px;
+  }
+
+  .point{
+    padding:12px 16px;
+    border-top:1px solid var(--line);
+    line-height:1.7;
+    font-size:15px;
+  }
+
+  .point strong{
+    color:var(--main);
+  }
+
+  .footer{
+    text-align:center;
+    font-size:12px;
+    color:var(--sub);
+    margin:40px 0;
+  }
+
+  .highlight{
+    background:#fff580;
+    color:#000;
+    padding:2px 4px;
+    border-radius:4px;
+  }
+  [data-theme="dark"] .highlight{
+    background:#ffdd57;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="bar">
+    <input type="text" id="search" placeholder="搜索知识点…">
+    <button id="themeBtn">夜间模式</button>
+  </div>
+  <div style="margin-top:6px">历史知识点</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">必修上册 中国古代史</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第一单元 从中华文明起源到秦汉大一统</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 旧石器时代</strong><br>
+时间：距今约300万年—1万年<br>
+代表：元谋人（距今约170万年，云南）、北京人（距今约70万—20万年，北京周口店）<br>
+特征：打制石器，采集狩猎，使用天然火，群居生活。
+</div>
+<div class="point">
+<strong>2. 新石器时代</strong><br>
+时间：距今约1万年—5000年<br>
+代表：仰韶文化（黄河中游，粟作农业，彩陶）、河姆渡文化（长江下游，水稻，干栏式建筑）、龙山文化、红山文化、良渚文化（玉器，礼制，早期国家形态）<br>
+特征：磨制石器，原始农业出现，定居生活，私有制与阶级萌芽。
+</div>
+<div class="point">
+<strong>3. 三皇五帝与早期国家</strong><br>
+禅让制：尧→舜→禹，选贤任能。<br>
+约公元前2070年，禹建立夏朝，世袭制取代禅让制，“家天下”确立。
+</div>
+<div class="point">
+<strong>4. 夏商周时期</strong><br>
+夏：前2070—前1600年，二里头文化，国家机构成熟。<br>
+商：前1600—前1046年，甲骨文成熟，青铜文明发达，内外服制管理地方。<br>
+西周：前1046—前771年，分封制、宗法制、礼乐制、井田制四大制度支撑统治。
+</div>
+<div class="point">
+<strong>分封制</strong><br>
+目的：巩固周王室统治，拓展疆域。<br>
+对象：王族子弟、功臣、先代贵族后裔。<br>
+内容：周天子分封土地与人民，诸侯需服从王命、定期朝贡、随从作战。<br>
+影响：扩大统治疆域，巩固周王室；后期诸侯势力膨胀，导致分裂割据。
+</div>
+<div class="point">
+<strong>宗法制</strong><br>
+核心：嫡长子继承制。<br>
+特点：血缘关系与政治关系紧密结合，家国一体。<br>
+影响：维护贵族等级秩序，深刻影响后世宗族与伦理观念。
+</div>
+<div class="point">
+<strong>5. 春秋战国大变革</strong><br>
+时间：前770—前221年<br>
+政治：分封制瓦解，诸侯争霸→战国七雄（齐楚燕韩赵魏秦），变法运动兴起。<br>
+经济：铁器牛耕推广，井田制瓦解，土地私有制逐步确立。<br>
+军事：争霸战争转向兼并战争，统一趋势不断加强。
+</div>
+<div class="point">
+<strong>商鞅变法</strong><br>
+时间：公元前356年，秦国秦孝公任用商鞅。<br>
+目的：富国强兵，在兼并战争中取胜。<br>
+内容：废井田开阡陌，承认土地私有；奖励耕织与军功；推行县制；实行连坐法；重农抑商。<br>
+结果：变法彻底成功，秦国国力迅速增强，为秦统一六国奠定基础。
+</div>
+<div class="point">
+<strong>百家争鸣</strong><br>
+儒家：孔子（仁、礼、德治）、孟子（仁政、民贵君轻）、荀子（礼法并用）。<br>
+道家：老子（无为而治、小国寡民）、庄子（逍遥自由）。<br>
+法家：韩非（法治、中央集权、严刑峻法）。<br>
+墨家：墨子（兼爱、非攻、尚贤、节用）。<br>
+影响：中国历史上第一次思想解放运动，奠定中华传统文化基础。
+</div>
+<div class="point">
+<strong>秦统一与中央集权制度</strong><br>
+时间：公元前221年，嬴政统一六国。<br>
+制度：皇帝制度、三公九卿制、郡县制。<br>
+巩固统一：统一文字、货币、度量衡、车轨；修建驰道、长城、灵渠。<br>
+灭亡：暴政（严刑峻法、繁重徭役兵役）引发农民起义，公元前207年灭亡。
+</div>
+<div class="point">
+<strong>西汉巩固大一统</strong><br>
+汉初：休养生息政策，出现文景之治。<br>
+汉武帝：推行推恩令削弱王国势力；罢黜百家、独尊儒术；盐铁官营；派卫青霍去病北击匈奴；派张骞通西域。<br>
+公元前60年设西域都护，标志西域正式归属中央政权。
+</div>
+<div class="point">
+<strong>东汉</strong><br>
+刘秀建立东汉，光武中兴；中后期外戚与宦官交替专权；蔡伦改进造纸术；220年东汉灭亡。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第二单元 三国两晋南北朝</div>
+<div class="folder-body">
+<div class="point">
+<strong>三国鼎立</strong><br>
+220年曹丕建魏，221年刘备建蜀，229年孙权建吴，三国鼎立局面形成。
+</div>
+<div class="point">
+<strong>西晋统一与灭亡</strong><br>
+280年西晋统一全国；316年被匈奴所灭，北方进入五胡十六国时期。
+</div>
+<div class="point">
+<strong>东晋南朝</strong><br>
+士族门阀垄断政治；北方人口大量南迁，江南地区开发，经济重心开始南移。
+</div>
+<div class="point">
+<strong>北魏孝文帝改革</strong><br>
+时间：5世纪后期<br>
+内容：迁都洛阳；穿汉服、说汉话、改汉姓、与汉族通婚；尊崇儒学，推行封建化改革。<br>
+影响：促进北方民族大交融，推动北方社会经济文化发展。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第三单元 隋唐繁荣与开放</div>
+<div class="folder-body">
+<div class="point">
+<strong>隋朝</strong><br>
+581年杨坚建隋，589年统一全国。<br>
+创立三省六部制、科举制；开凿大运河，沟通南北经济。<br>
+因暴政速亡，618年灭亡。
+</div>
+<div class="point">
+<strong>唐朝政治制度</strong><br>
+三省六部制：中书省决策、门下省审议、尚书省执行，分工明确，提高效率，分割相权加强皇权。<br>
+科举制：扩大统治基础，提高官员文化素质，促进社会阶层流动。
+</div>
+<div class="point">
+<strong>贞观之治、开元盛世</strong><br>
+唐太宗贞观之治、唐玄宗开元盛世为唐朝鼎盛时期。<br>
+安史之乱（755—763年）使唐朝由盛转衰；此后藩镇割据、宦官专权、朋党之争加速灭亡。
+</div>
+<div class="point">
+<strong>民族与对外关系</strong><br>
+文成公主入藏，密切唐蕃关系；玄奘西行天竺取经；鉴真东渡日本传播文化。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第四单元 宋元时期</div>
+<div class="folder-body">
+<div class="point">
+<strong>北宋加强中央集权</strong><br>
+措施：收精兵、削实权、制钱谷；重文轻武；派文臣担任知州，设通判监督。<br>
+影响：加强中央集权，消除地方割据隐患，但造成积贫积弱局面。
+</div>
+<div class="point">
+<strong>王安石变法</strong><br>
+目的：富国强兵，挽救北宋统治危机。<br>
+内容：青苗法、募役法、方田均税法、市易法、保甲法、将兵法。<br>
+结果：取得一定成效，但因触犯大官僚大地主利益，最终失败。
+</div>
+<div class="point">
+<strong>元朝</strong><br>
+推行行省制度，是中国省制的开端。<br>
+设宣政院管理西藏地区；设澎湖巡检司管辖澎湖与琉球（今台湾）。
+</div>
+<div class="point">
+<strong>科技文化</strong><br>
+活字印刷术、指南针、火药三大发明成熟并外传；理学形成；宋词、元曲繁荣。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第五单元 明清时期</div>
+<div class="folder-body">
+<div class="point">
+<strong>明朝</strong><br>
+废丞相，权分六部；设内阁辅助皇帝；建立厂卫特务机构；郑和下西洋宣扬国威；长期推行海禁政策。
+</div>
+<div class="point">
+<strong>清朝</strong><br>
+设军机处，君主专制制度达到顶峰；推行改土归流加强对西南边疆管理；实行闭关锁国政策，严格限制对外贸易。<br>
+疆域奠定：奠定现代中国版图基础。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">必修下册 中国近现代史+世界史</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第一单元 近代列强侵华与中国人民抗争</div>
+<div class="folder-body">
+<div class="point">
+<strong>鸦片战争 1840—1842</strong><br>
+根本原因：英国完成工业革命，打开中国市场。<br>
+结果：签订《南京条约》，割香港岛，赔款2100万银元，五口通商，协定关税。<br>
+影响：中国开始沦为半殖民地半封建社会，近代史开端。
+</div>
+<div class="point">
+<strong>第二次鸦片战争 1856—1860</strong><br>
+结果：签订《天津条约》《北京条约》；英法联军火烧圆明园；半殖民地化程度进一步加深。
+</div>
+<div class="point">
+<strong>甲午中日战争 1894—1895</strong><br>
+结果：签订《马关条约》，割台湾及澎湖列岛，赔款2亿两，允许列强在华设厂。<br>
+影响：半殖民地化程度大大加深，列强掀起瓜分中国狂潮。
+</div>
+<div class="point">
+<strong>八国联军侵华 1900—1901</strong><br>
+结果：签订《辛丑条约》，严禁中国人民反帝，列强驻兵北京至山海关铁路要地。<br>
+影响：中国完全沦为半殖民地半封建社会。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第二单元 近代探索与救亡运动</div>
+<div class="folder-body">
+<div class="point">
+<strong>太平天国运动 1851—1864</strong><br>
+爆发：金田起义。<br>
+纲领：《天朝田亩制度》（平均土地）、《资政新篇》（最早发展资本主义方案）。<br>
+意义：反封建反侵略的农民战争，沉重打击清王朝与列强侵略势力。
+</div>
+<div class="point">
+<strong>洋务运动 19世纪60—90年代</strong><br>
+口号：自强、求富。<br>
+内容：创办军事工业、民用工业，建立新式海军，兴办新式学堂。<br>
+结果：甲午战争战败宣告破产，是中国近代化的开端。
+</div>
+<div class="point">
+<strong>戊戌变法 1898</strong><br>
+领导：康有为、梁启超，依靠光绪帝。<br>
+内容：改革政府机构，发展资本主义工商业，废八股兴学堂，训练新式军队。<br>
+结果：慈禧发动戊戌政变，变法失败，起到思想启蒙作用。
+</div>
+<div class="point">
+<strong>辛亥革命 1911</strong><br>
+组织：中国同盟会，纲领“三民主义”。<br>
+爆发：1911年武昌起义。<br>
+成果：1912年中华民国成立，清帝退位，推翻君主专制制度。<br>
+意义：建立资产阶级共和国，民主共和观念深入人心。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第三单元 新民主主义革命</div>
+<div class="folder-body">
+<div class="point">
+<strong>五四运动 1919</strong><br>
+导火线：巴黎和会中国外交失败。<br>
+口号：外争主权，内除国贼。<br>
+意义：彻底反帝反封建的爱国运动，新民主主义革命开端，促进马克思主义传播。
+</div>
+<div class="point">
+<strong>中国共产党成立 1921</strong><br>
+中共一大召开，中国革命面貌焕然一新。
+</div>
+<div class="point">
+<strong>国民革命运动 1924—1927</strong><br>
+国共第一次合作，北伐战争基本推翻北洋军阀统治；四一二、七一五反革命政变，合作破裂。
+</div>
+<div class="point">
+<strong>土地革命战争 1927—1937</strong><br>
+南昌起义：打响武装反抗国民党第一枪。<br>
+井冈山道路：农村包围城市，武装夺取政权。<br>
+长征1934—1936：遵义会议成为生死攸关转折点，胜利会师保存革命骨干。
+</div>
+<div class="point">
+<strong>抗日战争 1931—1945</strong><br>
+1931九一八事变局部抗战；1937七七事变全面抗战。<br>
+正面战场与敌后战场相互配合；1945年取得胜利，是民族复兴的转折点。
+</div>
+<div class="point">
+<strong>解放战争 1946—1949</strong><br>
+战略防御→战略反攻→三大战役决战→渡江战役。<br>
+1949年10月1日中华人民共和国成立，新民主主义革命胜利。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第四单元 世界古代与近代</div>
+<div class="folder-body">
+<div class="point">
+<strong>古希腊罗马文明</strong><br>
+雅典民主政治：公民大会、陪审法庭，直接民主。<br>
+罗马法：《十二铜表法》成文法开端，《查士丁尼民法大全》体系完备，影响近代西方法制。
+</div>
+<div class="point">
+<strong>新航路开辟 15—16世纪</strong><br>
+人物：迪亚士、哥伦布、达·伽马、麦哲伦。<br>
+影响：世界开始连成整体，世界市场雏形出现，欧洲殖民扩张与资本原始积累。
+</div>
+<div class="point">
+<strong>文艺复兴 14—16世纪</strong><br>
+核心：人文主义，解放思想，推动近代科学与文化产生。
+</div>
+<div class="point">
+<strong>启蒙运动 17—18世纪</strong><br>
+核心：理性主义，为资产阶级革命与资本主义制度建立提供理论基础。
+</div>
+<div class="point">
+<strong>英美法资产阶级革命</strong><br>
+英国：1689《权利法案》确立君主立宪制。<br>
+美国：独立战争，1787宪法确立联邦制三权分立。<br>
+法国：大革命，《人权宣言》传播自由平等思想。
+</div>
+<div class="point">
+<strong>两次工业革命</strong><br>
+第一次工业革命：蒸汽时代，工厂制，世界市场初步形成。<br>
+第二次工业革命：电气时代，垄断组织，资本主义世界体系最终形成。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第五单元 世界现代史</div>
+<div class="folder-body">
+<div class="point">
+<strong>第一次世界大战 1914—1918</strong><br>
+帝国主义争霸战争，动摇欧洲霸权。
+</div>
+<div class="point">
+<strong>俄国十月革命 1917</strong><br>
+第一次胜利的社会主义革命，建立第一个社会主义国家。
+</div>
+<div class="point">
+<strong>第二次世界大战 1939—1945</strong><br>
+世界反法西斯战争胜利，奠定战后国际格局基础。
+</div>
+<div class="point">
+<strong>冷战 1947—1991</strong><br>
+美苏两极对峙，北约与华约对抗；1991苏联解体，冷战结束。
+</div>
+<div class="point">
+<strong>当今世界格局</strong><br>
+多极化趋势加强，经济全球化，和平与发展成为时代主题。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">选择性必修1 国家制度与社会治理</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第1课 中国古代政治制度的发展</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 中央官制演变</strong><br>
+秦：三公九卿制（丞相、太尉、御史大夫）。<br>
+汉：中外朝制，削弱相权加强皇权。<br>
+隋唐：三省六部制，中书决策、门下审议、尚书执行，分工明确，提高效率，分割相权。<br>
+宋：二府三司制，行政、军事、财政分权。<br>
+元：中书省一省制。<br>
+明：废丞相，设内阁，内阁仅为皇帝顾问机构。<br>
+清：军机处，君主专制达到顶峰。
+</div>
+<div class="point">
+<strong>2. 地方行政制度</strong><br>
+秦：郡县制。<br>
+汉：郡国并行制，推恩令解决王国问题。<br>
+唐：道州县三级，后期藩镇割据。<br>
+宋：路州县，文臣知州，设通判监督。<br>
+元：行省制，省路府州县，奠定后世省制基础。<br>
+明清：省府县，改土归流加强边疆控制。
+</div>
+<div class="point">
+<strong>3. 选官制度</strong><br>
+先秦：世卿世禄制，血缘世袭。<br>
+汉：察举制，举孝廉，以德取人。<br>
+魏晋南北朝：九品中正制，以门第取人，士族垄断官场。<br>
+隋至清：科举制，以才取人，扩大统治基础，加强中央集权，促进社会流动。
+</div>
+<div class="point">
+<strong>4. 监察与谏议制度</strong><br>
+秦：御史大夫掌监察。<br>
+汉：刺史制度监察地方。<br>
+唐：御史台。<br>
+宋：提点刑狱司、通判。<br>
+明清：都察院、六科给事中、按察使司。<br>
+作用：整顿吏治，加强皇权，本质为人治统治工具。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第2课 西方国家古代与近代政治制度</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 雅典民主政治</strong><br>
+时间：公元前6—前4世纪。<br>
+机构：公民大会（最高权力机关）、五百人议事会、陪审法庭。<br>
+特点：人民主权、轮番而治、直接民主。<br>
+局限：仅成年男性公民享有民主，奴隶、妇女、外邦人被排除。
+</div>
+<div class="point">
+<strong>2. 罗马法</strong><br>
+起源：《十二铜表法》，罗马第一部成文法。<br>
+发展：公民法→万民法。<br>
+体系：《查士丁尼民法大全》标志罗马法体系完备。<br>
+影响：近代欧洲法律渊源，确立私有财产神圣不可侵犯、契约自由等原则。
+</div>
+<div class="point">
+<strong>3. 英国君主立宪制</strong><br>
+确立：1689年《权利法案》，限制王权，确立议会主权。<br>
+发展：责任内阁制形成，首相掌握行政大权，内阁对议会负责。<br>
+特点：君主统而不治，议会至上。
+</div>
+<div class="point">
+<strong>4. 美国民主共和制</strong><br>
+1787年宪法，联邦制、三权分立、人民主权原则。<br>
+立法（国会）、行政（总统）、司法（最高法院）相互制衡。
+</div>
+<div class="point">
+<strong>5. 法国共和制</strong><br>
+1875年宪法最终确立共和制，总统与议会分权。
+</div>
+<div class="point">
+<strong>6. 德国君主立宪制</strong><br>
+1871年宪法，皇帝拥有极大权力，专制主义色彩浓厚。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第3课 中国近代至当代政治制度</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 清末预备立宪</strong><br>
+目的：挽救清朝统治，遏制革命。<br>
+内容：设咨议局、资政院，颁布《钦定宪法大纲》。<br>
+结果：暴露专制本质，加速清朝灭亡。
+</div>
+<div class="point">
+<strong>2. 中华民国政治制度</strong><br>
+《中华民国临时约法》，主权在民，三权分立，责任内阁制。<br>
+北洋军阀时期：军阀专制，民主制度遭破坏。<br>
+南京国民政府：一党专政，五院制。
+</div>
+<div class="point">
+<strong>3. 中国现代政治制度</strong><br>
+根本政治制度：人民代表大会制度。<br>
+政党制度：中国共产党领导的多党合作和政治协商制度。<br>
+民族制度：民族区域自治制度。<br>
+基层制度：基层群众自治制度。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第4课 中国古代法治与教化</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 礼法结合</strong><br>
+先秦：法家重法，儒家重礼。<br>
+汉代：外儒内法，德主刑辅。<br>
+唐代：《唐律疏议》实现礼法合一，影响深远。
+</div>
+<div class="point">
+<strong>2. 社会教化</strong><br>
+乡约、族规、学校教育、科举体系，以儒家伦理道德控制基层社会。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第5课 中国古代基层治理与社会保障</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 基层组织</strong><br>
+秦汉：乡里制。<br>
+隋唐：邻保制。<br>
+宋代：保甲制。<br>
+明清：里甲制、保甲制。<br>
+功能：征发赋役、维护治安、教化民众。
+</div>
+<div class="point">
+<strong>2. 社会保障</strong><br>
+仓储制度：常平仓、义仓、社仓。<br>
+社会救助：荒政、养济院、育婴堂，政府主导，民间辅助。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第6课 西方近代法治与社会保障</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 西方法治原则</strong><br>
+天赋人权、法律至上、权力制衡、程序正义、法律面前人人平等。
+</div>
+<div class="point">
+<strong>2. 现代社会保障</strong><br>
+德国首创现代社会保险制度；二战后福利国家普及；高福利政策带来财政负担与效率问题。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">选择性必修2 经济与社会生活</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第1课 从食物采集到食物生产</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 农业革命</strong><br>
+时间：约1万年前。<br>
+起源中心：西亚、东亚、美洲独立起源。<br>
+中国：长江流域水稻，黄河流域粟。<br>
+意义：人类从迁徙走向定居，私有制、阶级、国家逐步产生。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第2课 手工业与商业发展</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 中国古代手工业</strong><br>
+官营手工业：冶金、制瓷、丝织长期世界领先。<br>
+民营手工业：明清时期出现资本主义萌芽。<br>
+家庭手工业：自然经济重要组成部分。
+</div>
+<div class="point">
+<strong>2. 中国古代商业</strong><br>
+周代：工商食官。<br>
+汉代：丝绸之路开通。<br>
+唐代：坊市制度严格。<br>
+宋代：坊市界限打破，纸币出现，海外贸易繁荣。<br>
+明清：商帮（晋商、徽商）兴起，白银货币化，实行闭关锁国。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第3课 古代村落、城市与交通</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 村落与城市</strong><br>
+农业发展→村落形成→集市→城市。<br>
+唐长安：布局严整，坊市分离。<br>
+宋开封、临安：打破时空限制，商业城市繁荣。
+</div>
+<div class="point">
+<strong>2. 古代交通</strong><br>
+秦：驰道、直道。<br>
+隋：大运河沟通南北。<br>
+元：驿站系统发达。<br>
+海上丝绸之路：唐宋元时期鼎盛。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第4课 近代中国经济结构变动</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 自然经济解体</strong><br>
+列强商品倾销与原料掠夺，中国逐步卷入资本主义世界市场。
+</div>
+<div class="point">
+<strong>2. 洋务运动</strong><br>
+军事工业：安庆内军械所、江南制造总局。<br>
+民用工业：轮船招商局、开平煤矿。<br>
+意义：中国近代工业化起步，刺激民族资本主义产生。
+</div>
+<div class="point">
+<strong>3. 民族资本主义发展</strong><br>
+19世纪六七十年代产生；甲午战后初步发展；一战期间短暂春天；国民政府时期曲折发展；新中国成立后被社会主义改造。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第5课 现代中国经济建设</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 过渡时期</strong><br>
+一五计划：优先发展重工业，奠定工业化初步基础。<br>
+三大改造：完成对农业、手工业、资本主义工商业改造，建立社会主义经济制度。
+</div>
+<div class="point">
+<strong>2. 社会主义建设探索</strong><br>
+中共八大正确分析国内主要矛盾；大跃进、人民公社化运动出现失误；文革时期经济遭受严重破坏。
+</div>
+<div class="point">
+<strong>3. 改革开放</strong><br>
+农村：家庭联产承包责任制。<br>
+城市：国有企业改革。<br>
+开放格局：经济特区—沿海开放城市—沿海经济开放区—内地。<br>
+目标：建立社会主义市场经济体制。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第6课 新航路开辟与世界市场</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 新航路开辟</strong><br>
+影响：世界连为整体，世界市场雏形出现，欧洲商业革命、价格革命，殖民扩张加速资本原始积累。
+</div>
+<div class="point">
+<strong>2. 两次工业革命</strong><br>
+第一次：蒸汽时代，工厂制度确立，世界市场初步形成。<br>
+第二次：电气时代，垄断组织产生，资本主义世界市场最终形成。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第7课 现代社会生活变迁</div>
+<div class="folder-body">
+<div class="point">
+交通：火车、汽车、飞机、高铁普及。<br>
+通信：电报、电话、互联网发展。<br>
+城市化加速，物质生活、思想观念、社会习俗发生巨大变化。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">选择性必修3 文化交流与传播</div>
+<div class="folder-body">
+<div class="folder">
+<div class="folder-title">第1课 中华优秀传统文化</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 儒家思想发展</strong><br>
+孔子：仁、礼、德治。<br>
+孟子：仁政、民贵君轻。<br>
+荀子：礼法并重。<br>
+董仲舒：罢黜百家，独尊儒术。<br>
+宋明理学：程朱理学、陆王心学，强化伦理道德。
+</div>
+<div class="point">
+<strong>2. 其他思想流派</strong><br>
+道家：无为而治、顺应自然。<br>
+法家：法治、中央集权。<br>
+墨家：兼爱、非攻、尚贤。
+</div>
+<div class="point">
+<strong>3. 中华文化特点</strong><br>
+以人为本、天人合一、和而不同、家国情怀、重视伦理道德、包容创新。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第2课 古代中外文化交流</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 丝绸之路</strong><br>
+汉代：张骞通西域，丝绸、铁器西传，佛教传入中国。<br>
+唐代：玄奘西行、鉴真东渡，长安成为国际大都会。<br>
+元代：马可·波罗来华，东西方交流鼎盛。
+</div>
+<div class="point">
+<strong>2. 东亚文化圈</strong><br>
+以中国为中心，对朝鲜、日本产生深刻影响，制度、文字、儒学、佛教广泛传播。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第3课 近代西学东渐</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 新思想萌发</strong><br>
+林则徐、魏源：师夷长技以制夷，开眼看世界。
+</div>
+<div class="point">
+<strong>2. 洋务运动</strong><br>
+中体西用，学习西方先进技术。
+</div>
+<div class="point">
+<strong>3. 维新变法</strong><br>
+学习西方君主立宪制度。
+</div>
+<div class="point">
+<strong>4. 辛亥革命</strong><br>
+学习西方民主共和制度。
+</div>
+<div class="point">
+<strong>5. 新文化运动</strong><br>
+前期提倡民主与科学，批判封建礼教；后期传播马克思主义。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第4课 人口迁徙、物种交流</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 人口迁徙</strong><br>
+近代：欧洲殖民者向美洲、大洋洲移民，黑奴贸易，华工出国。<br>
+现代：劳务迁移、难民迁移、智力迁移。
+</div>
+<div class="point">
+<strong>2. 物种交流</strong><br>
+美洲作物：玉米、马铃薯、番茄、花生、烟草传入欧亚。<br>
+欧亚作物：小麦、水稻、家畜传入美洲。<br>
+影响：改变人类饮食结构，促进世界人口增长。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第5课 近代科学技术传播</div>
+<div class="folder-body">
+<div class="point">
+近代科学革命：哥白尼、伽利略、牛顿奠定近代科学体系。<br>
+工业革命技术在全球扩散，改变世界格局。<br>
+中国近代科技落后，现代逐步实现科技自立自强。
+</div>
+</div>
+</div>
+
+<div class="folder">
+<div class="folder-title">第6课 现代文化交流与全球化</div>
+<div class="folder-body">
+<div class="point">
+<strong>1. 文化交流途径</strong><br>
+留学教育、影视传媒、旅游、互联网，推动文化交融互鉴。
+</div>
+<div class="point">
+<strong>2. 文明发展态度</strong><br>
+尊重文明多样性，反对文化霸权主义，推动构建人类命运共同体。
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer">
+本网站由@石龙子/yiyi独立制作<br>
+仅供学习交流参考，无任何盈利
+</div>
+
+<script>
+// 折叠
+document.querySelectorAll('.folder-title').forEach(t => {
+  t.addEventListener('click', () => {
+    t.classList.toggle('active');
+  });
+});
+
+// 日夜切换
+const themeBtn = document.getElementById('themeBtn');
+themeBtn.addEventListener('click', () => {
+  const isDark = document.documentElement.dataset.theme === 'dark';
+  if (isDark) {
+    document.documentElement.dataset.theme = '';
+    themeBtn.textContent = '夜间模式';
+  } else {
+    document.documentElement.dataset.theme = 'dark';
+    themeBtn.textContent = '日间模式';
+  }
+});
+
+// 搜索高亮
+const search = document.getElementById('search');
+search.addEventListener('input', e => {
+  const val = e.target.value.trim().toLowerCase();
+  const points = document.querySelectorAll('.point');
+  points.forEach(p => {
+    const text = p.textContent.toLowerCase();
+    if (val === '') {
+      p.innerHTML = p.innerHTML.replace(/<\/?span[^>]*>/g, '');
+    } else {
+      if (text.includes(val)) {
+        const reg = new RegExp(val, 'gi');
+        p.innerHTML = p.textContent.replace(reg, m => `<span class="highlight">${m}</span>`);
+      } else {
+        p.innerHTML = p.innerHTML.replace(/<\/?span[^>]*>/g, '');
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>
