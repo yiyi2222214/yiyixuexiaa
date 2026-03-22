@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文科知识库 · 历政地速记站</title>
+<style>
+/* ========== 全局基础 ========== */
+:root {
+  --bg: #ffffff;
+  --card: #fdfdfd;
+  --text: #333;
+  --sub: #666;
+  --main: #ff8fb1;
+  --subcolor: #91bfff;
+  --line: #eee;
+  --dot-color: #f8e1e7;
+}
+[data-theme="dark"] {
+  --bg: #1a1a1e;
+  --card: #25252b;
+  --text: #e8e8e8;
+  --sub: #aaa;
+  --main: #ff9ebb;
+  --subcolor: #80b2ff;
+  --line: #333;
+  --dot-color: #332b33;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+  background-size: 20px 20px;
+  line-height: 1.7;
+  padding-bottom: 60px;
+  transition: 0.3s;
+}
+
+/* ========== 顶部导航 ========== */
+.header {
+  position: sticky;
+  top: 0;
+  background: var(--card);
+  padding: 14px 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  z-index: 100;
+}
+.nav {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-weight: bold;
+  color: var(--main);
+  font-size: 18px;
+}
+.theme-btn {
+  background: var(--subcolor);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* ========== 搜索框 ========== */
+.search-box {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+#search {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--text);
+  font-size: 16px;
+  outline: none;
+}
+
+/* ========== 主体容器 ========== */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* ========== 标签栏 ========== */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.tab {
+  padding: 8px 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.tab.active {
+  background: var(--main);
+  color: #fff;
+  border-color: var(--main);
+}
+
+/* ========== 折叠面板 ========== */
+.folder {
+  background: var(--card);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.folder-title {
+  padding: 14px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.folder-title::after {
+  content: "+";
+  color: var(--sub);
+  font-size: 18px;
+}
+.folder.open .folder-title::after {
+  content: "−";
+}
+.folder-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.folder.open .folder-body {
+  max-height: 2000px;
+  padding: 0 16px 14px;
+}
+
+/* ========== 知识点卡片 ========== */
+.point {
+  margin: 10px 0;
+  padding: 12px;
+  background: color-mix(in srgb, var(--card) 90%, var(--main) 5%);
+  border-radius: 10px;
+}
+.point strong {
+  color: var(--main);
+}
+.label {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--subcolor);
+  color: #fff;
+  font-size: 12px;
+  border-radius: 6px;
+  margin-right: 6px;
+}
+
+/* ========== 内容区块 ========== */
+.section {
+  display: none;
+}
+.section.show {
+  display: block;
+}
+
+/* ========== 地理答题模板卡片 ========== */
+.template-card {
+  padding: 14px;
+  background: color-mix(in srgb, var(--card) 85%, var(--subcolor) 6%);
+  border-radius: 12px;
+  margin: 10px 0;
+}
+.template-card h4 {
+  color: var(--subcolor);
+  margin-bottom: 6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="nav">
+    <div class="logo">📚 文科知识库 · 历政地</div>
+    <button class="theme-btn" id="themeToggle">夜间模式</button>
+  </div>
+</div>
+
+<div class="search-box">
+  <input type="text" id="search" placeholder="🔍 搜索知识点……">
+</div>
+
+<div class="container">
+  <div class="tabs">
+    <div class="tab active" data-target="history">历史</div>
+    <div class="tab" data-target="politics">政治</div>
+    <div class="tab" data-target="geo">地理（湘教版）</div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- 历史 -->
+  <!-- ============================================== -->
+  <div class="section show" id="history">
+    <div class="folder">
+      <div class="folder-title">📅 一、按时间线顺序（中国史）</div>
+      <div class="folder-body">
+
+        <div class="folder">
+          <div class="folder-title">先秦时期</div>
+          <div class="folder-body">
+            <div class="point">
+              <strong>时间</strong>：远古～公元前221年<br>
+              <strong>核心</strong>：分封制、宗法制、井田制、百家争鸣<br>
+              <strong>影响</strong>：奠定中国古代政治文化基础
+            </div>
+          </div>
+        </div>
+
+        <div class="folder">
+          <div class="folder-title">秦汉：大一统确立</div>
+          <div class="folder-body">
+            <div class="point">
+              <strong>时间</strong>：前221—220年<br>
+              <strong>措施</strong>：皇帝制、郡县制、推恩令、独尊儒术<br>
+              <strong>意义</strong>：统一多民族国家初步形成
+            </div>
+          </div>
+        </div>
+
+        <div class="folder">
+          <div class="folder-title">隋唐：繁荣与开放</div>
+          <div class="folder-body">
+            <div class="point">
+              <strong>制度</strong>：三省六部制、科举制<br>
+              <strong>经济</strong>：均田制、大运河<br>
+              <strong>文化</strong>：唐诗、三教并行
+            </div>
+          </div>
+        </div>
+
+        <div class="folder">
+          <div class="folder-title">宋元：民族融合与经济重心南移</div>
+          <div class="folder-body">
+            <div class="point">
+              <strong>宋</strong>：重文轻武、商品经济繁荣<br>
+              <strong>元</strong>：行省制度、疆域空前扩大<br>
+              <strong>趋势</strong>：经济重心彻底南移
+            </div>
+          </div>
+        </div>
+
+        <div class="folder">
+          <div class="folder-title">明清：君主专制顶峰</div>
+          <div class="folder-body">
+            <div class="point">
+              <strong>措施</strong>：废丞相、设内阁、军机处<br>
+              <strong>对外</strong>：海禁、闭关锁国<br>
+              <strong>结局</strong>：逐渐落后世界潮流
+            </div>
+          </div>
+        </div>
+
+        <div class="folder">
+          <div class="folder-title">近代史：1840—1949</div>
+          <div class="folder-body">
+            <div class="point">
+              <strong>阶段</strong>：旧民主主义 → 新民主主义革命<br>
+              <strong>关键</strong>：鸦片战争、甲午战争、辛亥革命、五四运动、抗战、解放战争<br>
+              <strong>主线</strong>：民族独立与近代化
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="folder">
+      <div class="folder-title">📘 二、按必修+选修目录顺序</div>
+      <div class="folder-body">
+        <div class="folder">
+          <div class="folder-title">必修1：政治制度史</div>
+          <div class="folder-body">
+            <div class="point">
+              <span class="label">中国</span>君主专制演进<br>
+              <span class="label">西方</span>雅典民主、罗马法、近代代议制
+            </div>
+          </div>
+        </div>
+        <div class="folder">
+          <div class="folder-title">必修2：经济发展史</div>
+          <div class="folder-body">
+            <div class="point">
+              农业、手工业、商业、资本主义萌芽、工业革命、世界市场、新中国经济建设
+            </div>
+          </div>
+        </div>
+        <div class="folder">
+          <div class="folder-title">必修3：思想文化史</div>
+          <div class="folder-body">
+            <div class="point">
+              百家争鸣、儒学正统化、西学东渐、新文化运动、马克思主义传播
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- 政治 -->
+  <!-- ============================================== -->
+  <div class="section" id="politics">
+    <div class="folder">
+      <div class="folder-title">📖 经济生活</div>
+      <div class="folder-body">
+        <div class="point"><strong>价格影响因素</strong>：价值决定、供求影响、政策、货币供应</div>
+        <div class="point"><strong>消费</strong>：影响因素、消费心理、正确消费观</div>
+        <div class="point"><strong>企业经营</strong>：战略、创新、信誉、社会责任</div>
+        <div class="point"><strong>分配</strong>：按劳分配、生产要素分配、共同富裕</div>
+        <div class="point"><strong>市场经济</strong>：市场调节、宏观调控、新发展理念</div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">⚖️ 政治生活</div>
+      <div class="folder-body">
+        <div class="point">公民：权利、义务、参与政治生活途径</div>
+        <div class="point">政府：职能、宗旨、依法行政、接受监督</div>
+        <div class="point">人大制度、政党制度、民族区域自治、基层群众自治</div>
+        <div class="point">国际社会：国家利益、和平发展、人类命运共同体</div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">🎨 文化生活</div>
+      <div class="folder-body">
+        <div class="point">文化作用、文化传承、文化创新、民族精神、文化自信</div>
+      </div>
+    </div>
+    <div class="folder">
+      <div class="folder-title">🧠 生活与哲学</div>
+      <div class="folder-body">
+        <div class="point">唯物论、认识论、辩证法、历史唯物主义、价值观</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- 地理（湘教版） -->
+  <!-- ============================================== -->
+  <div class="section" id="geo">
+    <div class="folder">
+      <div class="folder-title">🌍 必修基础知识（湘教版）</div>
+      <div class="folder-body">
+        <div class="point">地球运动、大气环流、天气系统、水循环、洋流、地质作用、自然带</div>
+        <div class="point">人口增长、人口迁移、城市化、农业区位、工业区位、交通、服务业</div>
+      </div>
+    </div>
+
+    <div class="folder">
+      <div class="folder-title">📝 地理万能答题模板</div>
+      <div class="folder-body">
+        <div class="template-card">
+          <h4>自然地理特征描述</h4>
+          位置 → 地形 → 气候 → 水文 → 土壤 → 植被 → 资源
+        </div>
+        <div class="template-card">
+          <h4>农业区位条件</h4>
+          自然：气候、地形、土壤、水源<br>
+          人文：市场、交通、政策、科技、劳动力
+        </div>
+        <div class="template-card">
+          <h4>工业区位条件</h4>
+          原料、能源、市场、交通、技术、劳动力、政策、环境、产业基础
+        </div>
+        <div class="template-card">
+          <h4>城市化问题</h4>
+          交通拥堵、环境污染、用地紧张、住房困难、社会问题
+        </div>
+        <div class="template-card">
+          <h4>生态问题答题</h4>
+          成因：自然+人为<br>
+          危害：对气候/水文/生物/土壤<br>
+          措施：工程+生物+管理
+        </div>
+      </div>
+    </div>
+
+    <div class="folder">
+      <div class="folder-title">🗺️ 中国各区域地理特征</div>
+      <div class="folder-body">
+        <div class="point"><strong>南方地区</strong>：亚热带季风、水田、丘陵、有色金属、水运发达</div>
+        <div class="point"><strong>北方地区</strong>：温带季风、旱地、煤铁石油、平原广布</div>
+        <div class="point"><strong>西北地区</strong>：干旱、光照强、畜牧业、绿洲农业、荒漠化</div>
+        <div class="point"><strong>青藏地区</strong>：高寒、河谷农业、太阳能地热能、生态脆弱</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// 标签切换
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const target = tab.dataset.target;
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('show'));
+    document.getElementById(target).classList.add('show');
+  });
+});
+
+// 折叠面板
+document.querySelectorAll('.folder-title').forEach(title => {
+  title.addEventListener('click', () => {
+    const folder = title.parentElement;
+    folder.classList.toggle('open');
+  });
+});
+
+// 夜间模式
+const themeBtn = document.getElementById('themeToggle');
+themeBtn.addEventListener('click', () => {
+  const isDark = document.documentElement.toggleAttribute('data-theme');
+  themeBtn.textContent = isDark ? '日间模式' : '夜间模式';
+});
+
+// 搜索功能
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+  const val = search.value.toLowerCase();
+  document.querySelectorAll('.point, .template-card, .folder-title').forEach(el => {
+    const txt = el.textContent.toLowerCase();
+    el.style.display = txt.includes(val) ? '' : 'none';
+  });
+});
+</script>
+
+</body>
+</html>
